@@ -3,43 +3,269 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Language Learning Lab</title>
+  <title>小龍蝦 Language Lab｜日文旅遊會話 Demo</title>
   <style>
-    body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif; margin:0; background:#0f172a; color:#e2e8f0; }
-    .wrap { max-width: 820px; margin: 0 auto; padding: 40px 20px; }
-    .card { background:#111827; border:1px solid #243042; border-radius:20px; padding:28px; }
-    h1 { margin:0 0 12px; font-size: 34px; }
-    p { line-height: 1.7; color:#cbd5e1; }
-    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin-top:24px; }
-    .box { background:#0b1220; border:1px solid #243042; border-radius:16px; padding:18px; }
-    .btn { display:inline-block; margin-top:12px; padding:10px 14px; border-radius:999px; background:#38bdf8; color:#082f49; text-decoration:none; font-weight:700; }
-    .muted { color:#94a3b8; font-size:14px; }
+    :root {
+      --bg: #0b1220;
+      --card: #111827;
+      --card2: #0f172a;
+      --line: #243042;
+      --text: #e5eefb;
+      --muted: #9fb0c8;
+      --accent: #38bdf8;
+      --good: #22c55e;
+      --bad: #ef4444;
+      --warn: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;
+      background: radial-gradient(circle at top, #12203a 0%, var(--bg) 52%);
+      color: var(--text);
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 40px; }
+    .hero, .panel, .card {
+      background: rgba(17,24,39,.88);
+      border: 1px solid rgba(36,48,66,.95);
+      border-radius: 20px;
+      box-shadow: 0 14px 50px rgba(0,0,0,.25);
+    }
+    .hero { padding: 26px; display: grid; gap: 10px; }
+    .eyebrow { color: #7dd3fc; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.08; }
+    .lead { margin: 0; color: var(--muted); line-height: 1.7; max-width: 72ch; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 8px 12px; border-radius: 999px; background: rgba(56,189,248,.12); color: #a5e6ff; font-size: 13px; }
+    .layout { display: grid; gap: 16px; grid-template-columns: 1.4fr .9fr; margin-top: 16px; }
+    .panel, .card { padding: 18px; }
+    .panel h2, .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .muted { color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .stack { display: grid; gap: 12px; }
+    .scenario-title { font-size: 20px; margin: 0; }
+    .jp { font-size: 18px; color: #dbeafe; }
+    .ph { color: #9dd6ff; font-weight: 700; }
+    .choice-grid { display: grid; gap: 10px; margin-top: 14px; }
+    button.choice, button.nav {
+      border: 1px solid var(--line);
+      background: var(--card2);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 14px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      transition: transform .06s ease, border-color .12s ease, background .12s ease;
+    }
+    button.choice:hover, button.nav:hover { transform: translateY(-1px); border-color: #3b82f6; }
+    button.choice.correct { border-color: rgba(34,197,94,.9); background: rgba(34,197,94,.12); }
+    button.choice.wrong { border-color: rgba(239,68,68,.9); background: rgba(239,68,68,.12); }
+    .feedback {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #0b1220;
+      border: 1px solid var(--line);
+      min-height: 54px;
+      line-height: 1.6;
+    }
+    .feedback.good { border-color: rgba(34,197,94,.6); }
+    .feedback.bad { border-color: rgba(239,68,68,.6); }
+    .feedback.warn { border-color: rgba(245,158,11,.6); }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .nav.primary { background: linear-gradient(135deg, #38bdf8, #22d3ee); color: #062033; border-color: transparent; font-weight: 800; }
+    .nav.secondary { background: transparent; }
+    .stats { display: grid; gap: 10px; grid-template-columns: repeat(3,1fr); }
+    .stat { padding: 14px; background: #0b1220; border: 1px solid var(--line); border-radius: 14px; }
+    .stat .k { color: var(--muted); font-size: 12px; }
+    .stat .v { font-size: 24px; font-weight: 800; margin-top: 4px; }
+    .mini { background:#0b1220; border:1px solid var(--line); border-radius: 16px; padding: 14px; }
+    .mini ul { margin: 8px 0 0 18px; color: var(--muted); }
+    .footer { color: var(--muted); font-size: 13px; margin-top: 14px; }
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="card">
-      <h1>Language Learning Lab</h1>
-      <p>這會是你的互動式語言學習首頁。之後可以放單字卡、對話練習、測驗、發音提示，點按鈕就進下一題。</p>
-      <a class="btn" href="#lessons">開始練習</a>
+    <section class="hero">
+      <div class="badge">🦞 小龍蝦 Language Lab · GitHub Pages Demo</div>
+      <div class="eyebrow">Japanese Travel Conversation</div>
+      <h1>日文旅遊會話互動 Demo</h1>
+      <p class="lead">這版是示範用的互動頁：每題都是旅遊場景，你選答案、立刻看解釋。之後可以接成電子報、每日複習或進階情境練習。</p>
+    </section>
 
-      <div id="lessons" class="grid">
-        <div class="box">
-          <strong>單字卡</strong>
-          <p>看題目、選答案、立刻知道對不對。</p>
-        </div>
-        <div class="box">
-          <strong>情境對話</strong>
-          <p>把句子拆成選項，做成簡單互動題。</p>
-        </div>
-        <div class="box">
-          <strong>每日複習</strong>
-          <p>把昨天學過的內容整理成短練習。</p>
-        </div>
-      </div>
+    <div class="layout">
+      <section class="panel">
+        <div class="stack">
+          <div>
+            <div class="muted">Scenario</div>
+            <h2 class="scenario-title" id="scenarioTitle">—</h2>
+          </div>
+          <div class="jp" id="scenarioPrompt">—</div>
+          <div class="muted" id="scenarioHint">—</div>
 
-      <p class="muted">Next: connect this page to GitHub Pages, then add real interactive flows.</p>
+          <div class="choice-grid" id="choices"></div>
+          <div class="feedback warn" id="feedback">先選一個答案。</div>
+
+          <div class="actions">
+            <button class="nav secondary" id="prevBtn">← 上一題</button>
+            <button class="nav primary" id="nextBtn">下一題 →</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="stack">
+        <section class="card">
+          <h3>學習目標</h3>
+          <div class="muted">快速學會：問路、點餐、入住、搭車。每題都先看日文，再用中文理解意思。</div>
+        </section>
+
+        <section class="card">
+          <h3>目前進度</h3>
+          <div class="stats">
+            <div class="stat"><div class="k">正確</div><div class="v" id="correctCount">0</div></div>
+            <div class="stat"><div class="k">已作答</div><div class="v" id="answeredCount">0</div></div>
+            <div class="stat"><div class="k">題數</div><div class="v" id="totalCount">3</div></div>
+          </div>
+        </section>
+
+        <section class="card mini">
+          <h3>你會看到的內容</h3>
+          <ul>
+            <li>旅遊場景一句話</li>
+            <li>多個選項，選完立刻回饋</li>
+            <li>正解 + 中文解釋 + 例句</li>
+          </ul>
+        </section>
+      </aside>
     </div>
+
+    <p class="footer">Next: 加上單字卡、語音、與「點擊後直接到下一個情境」的完整學習流程。</p>
   </div>
+
+  <script>
+    const lessons = [
+      {
+        title: '在車站問路',
+        prompt: 'すみません、<span class="ph">東京駅</span>はどこですか。',
+        hint: '你在站內想問「東京車站在哪裡？」',
+        choices: [
+          { text: '請問，東京車站在哪裡？', correct: true, explain: '對。 すみません = 不好意思 / 請問，どこですか = 在哪裡？' },
+          { text: '不好意思，我要買票。', correct: false, explain: '這句意思不對。 這題是在問位置，不是買票。' },
+          { text: '請問，幾點發車？', correct: false, explain: '這題是「在哪裡」，不是問時間。' },
+        ],
+      },
+      {
+        title: '在餐廳點餐',
+        prompt: 'これを <span class="ph">一つ</span> ください。',
+        hint: '看到菜單後，你想說「請給我一個這個」',
+        choices: [
+          { text: '請給我一個這個。', correct: true, explain: '對。 これ = 這個，ひとつ / 一つ = 一個，ください = 請給我。' },
+          { text: '請給我兩個這個。', correct: false, explain: '數量不對。 一つ是 1 個。' },
+          { text: '這個太貴了。', correct: false, explain: '這句不是點餐句。' },
+        ],
+      },
+      {
+        title: '入住飯店',
+        prompt: 'チェックインを <span class="ph">お願いします</span>。',
+        hint: '你到飯店櫃台，想辦理入住。',
+        choices: [
+          { text: '我要辦理入住。', correct: true, explain: '對。 チェックイン = check-in，お願いします = 麻煩你 / 拜託。' },
+          { text: '我要退房。', correct: false, explain: '退房是 チェックアウト。' },
+          { text: '請給我一張地圖。', correct: false, explain: '不是這個意思。' },
+        ],
+      },
+    ];
+
+    let index = 0;
+    let correct = 0;
+    let answered = 0;
+    let locked = false;
+
+    const els = {
+      title: document.getElementById('scenarioTitle'),
+      prompt: document.getElementById('scenarioPrompt'),
+      hint: document.getElementById('scenarioHint'),
+      choices: document.getElementById('choices'),
+      feedback: document.getElementById('feedback'),
+      prevBtn: document.getElementById('prevBtn'),
+      nextBtn: document.getElementById('nextBtn'),
+      correctCount: document.getElementById('correctCount'),
+      answeredCount: document.getElementById('answeredCount'),
+      totalCount: document.getElementById('totalCount'),
+    };
+
+    function render() {
+      const lesson = lessons[index];
+      locked = false;
+      els.title.textContent = lesson.title;
+      els.prompt.innerHTML = lesson.prompt;
+      els.hint.textContent = lesson.hint;
+      els.totalCount.textContent = lessons.length;
+      els.feedback.className = 'feedback warn';
+      els.feedback.textContent = '先選一個答案。';
+      els.choices.innerHTML = '';
+
+      lesson.choices.forEach((choice) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice';
+        btn.textContent = choice.text;
+        btn.addEventListener('click', () => pick(choice, btn));
+        els.choices.appendChild(btn);
+      });
+
+      els.prevBtn.disabled = index === 0;
+      els.nextBtn.textContent = index === lessons.length - 1 ? '完成 ✓' : '下一題 →';
+      updateStats();
+    }
+
+    function pick(choice, btn) {
+      if (locked) return;
+      locked = true;
+      answered += 1;
+      const allBtns = [...document.querySelectorAll('.choice')];
+
+      if (choice.correct) {
+        correct += 1;
+        btn.classList.add('correct');
+        els.feedback.className = 'feedback good';
+        els.feedback.innerHTML = `✅ 正確！<br>${choice.explain}`;
+      } else {
+        btn.classList.add('wrong');
+        els.feedback.className = 'feedback bad';
+        els.feedback.innerHTML = `❌ 這不是正解。<br>${choice.explain}`;
+        allBtns.find(b => b.textContent === lessons[index].choices.find(c => c.correct).text)?.classList.add('correct');
+      }
+
+      allBtns.forEach(b => b.disabled = true);
+      updateStats();
+    }
+
+    function updateStats() {
+      els.correctCount.textContent = correct;
+      els.answeredCount.textContent = answered;
+    }
+
+    els.prevBtn.addEventListener('click', () => {
+      if (index > 0) {
+        index -= 1;
+        render();
+      }
+    });
+
+    els.nextBtn.addEventListener('click', () => {
+      if (index < lessons.length - 1) {
+        index += 1;
+        render();
+      } else {
+        els.feedback.className = 'feedback good';
+        els.feedback.textContent = `完成了！你答對 ${correct}/${answered} 題。下一步可以加語音、更多情境和每日複習。`;
+      }
+    });
+
+    render();
+  </script>
 </body>
 </html>
