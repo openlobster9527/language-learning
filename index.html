@@ -273,6 +273,7 @@
 
     const stripHtml = (s) => s.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
     const currentLessons = () => lessonSets[mode];
+    const shuffled = (items) => [...items].sort(() => Math.random() - 0.5);
 
     function updateVoiceList() {
       if (!('speechSynthesis' in window)) return;
@@ -338,9 +339,10 @@
       els.feedback.textContent = '請先選擇答案。';
       els.choices.innerHTML = '';
 
-      lesson.choices.forEach((choice) => {
+      shuffled(lesson.choices).forEach((choice) => {
         const btn = document.createElement('button');
         btn.className = 'choice';
+        btn.dataset.correct = choice.correct ? '1' : '0';
         btn.textContent = choice.text;
         btn.addEventListener('click', () => pick(choice, btn));
         els.choices.appendChild(btn);
@@ -371,8 +373,7 @@
         btn.classList.add('wrong');
         els.feedback.className = 'feedback bad';
         els.feedback.innerHTML = `❌ 這不是正解。<br>${choice.explain}`;
-        const correctText = currentLessons()[index].choices.find(c => c.correct).text;
-        allBtns.find(b => b.textContent === correctText)?.classList.add('correct');
+        allBtns.find(b => b.dataset.correct === '1')?.classList.add('correct');
       }
 
       allBtns.forEach(b => b.disabled = true);
