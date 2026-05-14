@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>小龍蝦 Language Lab｜日文旅遊會話練習</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #111827;
+      --card2: #0f172a;
+      --line: #243042;
+      --text: #e5eefb;
+      --muted: #9fb0c8;
+      --accent: #38bdf8;
+      --good: #22c55e;
+      --bad: #ef4444;
+      --warn: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;
+      background: radial-gradient(circle at top, #12203a 0%, var(--bg) 52%);
+      color: var(--text);
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 40px; }
+    .hero, .panel, .card {
+      background: rgba(17,24,39,.88);
+      border: 1px solid rgba(36,48,66,.95);
+      border-radius: 20px;
+      box-shadow: 0 14px 50px rgba(0,0,0,.25);
+    }
+    .hero { padding: 26px; display: grid; gap: 10px; }
+    .eyebrow { color: #7dd3fc; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.08; }
+    .lead { margin: 0; color: var(--muted); line-height: 1.7; max-width: 72ch; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 8px 12px; border-radius: 999px; background: rgba(56,189,248,.12); color: #a5e6ff; font-size: 13px; }
+    .layout { display: grid; gap: 16px; grid-template-columns: 1.4fr .9fr; margin-top: 16px; }
+    .panel, .card { padding: 18px; }
+    .panel h2, .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .muted { color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .stack { display: grid; gap: 12px; }
+    .scenario-title { font-size: 20px; margin: 0; }
+    .jp { font-size: 18px; color: #dbeafe; line-height: 1.8; }
+    .romaji { color: #9fb0c8; font-size: 14px; line-height: 1.6; }
+    .prompt-shell {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #0b1220;
+      display: grid;
+      gap: 10px;
+    }
+    .prompt-note { color: #9dd6ff; font-size: 13px; }
+    .ph { color: #9dd6ff; font-weight: 700; }
+    .modebar { display: flex; gap: 10px; flex-wrap: wrap; }
+    button.choice, button.nav, button.mode {
+      border: 1px solid var(--line);
+      background: var(--card2);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 14px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      transition: transform .06s ease, border-color .12s ease, background .12s ease;
+    }
+    button.choice:hover, button.nav:hover, button.mode:hover { transform: translateY(-1px); border-color: #3b82f6; }
+    button.mode.active { border-color: rgba(56,189,248,.9); background: rgba(56,189,248,.14); }
+    button.nav.primary { background: linear-gradient(135deg, #38bdf8, #22d3ee); color: #062033; border-color: transparent; font-weight: 800; }
+    button.choice.correct { border-color: rgba(34,197,94,.9); background: rgba(34,197,94,.12); }
+    button.choice.wrong { border-color: rgba(239,68,68,.9); background: rgba(239,68,68,.12); }
+    .feedback {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #0b1220;
+      border: 1px solid var(--line);
+      min-height: 54px;
+      line-height: 1.6;
+    }
+    .feedback.good { border-color: rgba(34,197,94,.6); }
+    .feedback.bad { border-color: rgba(239,68,68,.6); }
+    .feedback.warn { border-color: rgba(245,158,11,.6); }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .stats { display: grid; gap: 10px; grid-template-columns: repeat(3,1fr); }
+    .stat { padding: 14px; background: #0b1220; border: 1px solid var(--line); border-radius: 14px; }
+    .stat .k { color: var(--muted); font-size: 12px; }
+    .stat .v { font-size: 24px; font-weight: 800; margin-top: 4px; }
+    .mini { background:#0b1220; border:1px solid var(--line); border-radius: 16px; padding: 14px; }
+    .mini ul { margin: 8px 0 0 18px; color: var(--muted); }
+    .footer { color: var(--muted); font-size: 13px; margin-top: 14px; }
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="badge">🦞 小龍蝦 Language Lab · 日文旅遊會話練習</div>
+      <div class="eyebrow">Japanese Travel Conversation</div>
+      <h1>日文旅遊會話練習</h1>
+      <p class="lead">以情境式題目練習旅遊常用日文；作答後再參考中文解釋。</p>
+    </section>
+
+    <div class="layout">
+      <section class="panel">
+        <div class="stack">
+          <div>
+            <div class="muted">情境</div>
+            <h2 class="scenario-title" id="scenarioTitle">—</h2>
+          </div>
+
+          <div class="modebar">
+            <button class="mode active" id="readingModeBtn">閱讀題</button>
+            <button class="mode" id="listeningModeBtn">聽力題</button>
+            <button class="mode" id="speakBtn">▶ 播放音訊</button>
+          </div>
+
+          <div class="prompt-shell">
+            <div class="prompt-note" id="scenarioMode">—</div>
+            <div class="jp" id="scenarioPrompt">—</div>
+            <div class="romaji" id="scenarioRomaji">—</div>
+            <div class="muted" id="scenarioHint">—</div>
+          </div>
+
+          <div class="choice-grid" id="choices"></div>
+          <div class="feedback warn" id="feedback">請先選擇答案。</div>
+
+          <div class="actions">
+            <button class="nav secondary" id="prevBtn">← 上一題</button>
+            <button class="nav primary" id="nextBtn">下一題 →</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="stack">
+        <section class="card">
+          <h3>學習目標</h3>
+          <div class="muted">練習問路、點餐、入住與乘車等常用表達。</div>
+        </section>
+
+        <section class="card">
+          <h3>目前進度</h3>
+          <div class="stats">
+            <div class="stat"><div class="k">正確</div><div class="v" id="correctCount">0</div></div>
+            <div class="stat"><div class="k">已作答</div><div class="v" id="answeredCount">0</div></div>
+            <div class="stat"><div class="k">題數</div><div class="v" id="totalCount">3</div></div>
+          </div>
+        </section>
+
+        <section class="card mini">
+          <h3>練習內容</h3>
+          <ul>
+            <li>情境式日文句子</li>
+            <li>作答後顯示中文解釋</li>
+            <li>聽力題可播放日文音檔</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <p class="footer">後續可加入單字卡、更多題型與自動進階流程。</p>
+  </div>
+
+  <script>
+    let lessonSets = {
+      reading: [
+        {
+          title: '車站情境',
+          prompt: 'すみません、<span class="ph">東京駅</span>はどこですか。',
+          romaji: 'Sumimasen, Tōkyō-eki wa doko desu ka.',
+          hint: '',
+          audio: 'すみません、東京駅はどこですか。',
+          choices: [
+            { text: '請問，東京車站在哪裡？', correct: true, explain: '對。 すみません = 不好意思 / 請問，どこですか = 在哪裡？' },
+            { text: '不好意思，我要買票。', correct: false, explain: '這句意思不對。 這題是在問位置，不是買票。' },
+            { text: '請問，幾點發車？', correct: false, explain: '這題是「在哪裡」，不是問時間。' },
+          ],
+        },
+        {
+          title: '餐廳情境',
+          prompt: 'これを <span class="ph">一つ</span> ください。',
+          romaji: 'Kore o hitotsu kudasai.',
+          hint: '',
+          audio: 'これを一つください。',
+          choices: [
+            { text: '請給我一個這個。', correct: true, explain: '對。 これ = 這個，ひとつ / 一つ = 一個，ください = 請給我。' },
+            { text: '請給我兩個這個。', correct: false, explain: '數量不對。 一つ是 1 個。' },
+            { text: '這個太貴了。', correct: false, explain: '這句不是點餐句。' },
+          ],
+        },
+        {
+          title: '飯店情境',
+          prompt: 'チェックインを <span class="ph">お願いします</span>。',
+          romaji: 'Chekkuin o onegaishimasu.',
+          hint: '',
+          audio: 'チェックインをお願いします。',
+          choices: [
+            { text: '我要辦理入住。', correct: true, explain: '對。 チェックイン = check-in，お願いします = 麻煩你 / 拜託。' },
+            { text: '我要退房。', correct: false, explain: '退房是 チェックアウト。' },
+            { text: '請給我一張地圖。', correct: false, explain: '不是這個意思。' },
+          ],
+        },
+      ],
+      listening: [
+        {
+          title: '月台情境',
+          prompt: '—',
+          romaji: 'Kono densha wa Kyōto ni ikimasu ka.',
+          hint: '先聽題，再選最適合的答案。',
+          audio: 'この電車は京都に行きますか。',
+          choices: [
+            { text: '這班電車會去京都嗎？', correct: true, explain: '對。 この電車は = 這班電車，京都に行きますか = 會去京都嗎？' },
+            { text: '這班電車幾點出發？', correct: false, explain: '這句是問目的地，不是時間。' },
+            { text: '請問這裡可以買票嗎？', correct: false, explain: '這句是在問購票，不是方向。' },
+          ],
+        },
+        {
+          title: '餐廳情境',
+          prompt: '—',
+          romaji: 'Osusume wa arimasu ka.',
+          hint: '先聽題，再選最接近的意思。',
+          audio: 'おすすめはありますか。',
+          choices: [
+            { text: '有推薦的嗎？', correct: true, explain: '對。 おすすめ = 推薦。' },
+            { text: '可以外帶嗎？', correct: false, explain: '這句是在問推薦，不是外帶。' },
+            { text: '要加辣嗎？', correct: false, explain: '意思不同。' },
+          ],
+        },
+        {
+          title: '飯店情境',
+          prompt: '—',
+          romaji: 'Asa-gohan wa nanji desu ka.',
+          hint: '請先播放音訊，再作答。',
+          audio: '朝ごはんは何時ですか。',
+          choices: [
+            { text: '早餐幾點？', correct: true, explain: '對。 朝ごはん = 早餐，何時ですか = 幾點？' },
+            { text: '早餐有幾種？', correct: false, explain: '這句是問時間，不是種類。' },
+            { text: '退房時間是幾點？', correct: false, explain: '這句是在問退房，不是早餐。' },
+          ],
+        },
+      ],
+    };
+
+    let mode = 'reading';
+    let index = 0;
+    let correct = 0;
+    let answered = 0;
+    let locked = false;
+    let voices = [];
+
+    const els = {
+      title: document.getElementById('scenarioTitle'),
+      mode: document.getElementById('scenarioMode'),
+      prompt: document.getElementById('scenarioPrompt'),
+      romaji: document.getElementById('scenarioRomaji'),
+      hint: document.getElementById('scenarioHint'),
+      choices: document.getElementById('choices'),
+      feedback: document.getElementById('feedback'),
+      prevBtn: document.getElementById('prevBtn'),
+      nextBtn: document.getElementById('nextBtn'),
+      correctCount: document.getElementById('correctCount'),
+      answeredCount: document.getElementById('answeredCount'),
+      totalCount: document.getElementById('totalCount'),
+      readingModeBtn: document.getElementById('readingModeBtn'),
+      listeningModeBtn: document.getElementById('listeningModeBtn'),
+      speakBtn: document.getElementById('speakBtn'),
+    };
+
+    const stripHtml = (s) => s.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
+    const currentLessons = () => lessonSets[mode];
+    const shuffled = (items) => [...items].sort(() => Math.random() - 0.5);
+
+    function updateVoiceList() {
+      if (!('speechSynthesis' in window)) return;
+      voices = window.speechSynthesis.getVoices();
+    }
+
+    function speak(text) {
+      if (!('speechSynthesis' in window)) {
+        els.feedback.className = 'feedback bad';
+        els.feedback.textContent = '目前瀏覽器不支援語音播放功能。';
+        return;
+      }
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ja-JP';
+      utterance.rate = 0.95;
+      utterance.pitch = 1;
+      const jaVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ja'));
+      if (jaVoice) utterance.voice = jaVoice;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function setMode(nextMode) {
+      if (mode === nextMode) return;
+      mode = nextMode;
+      index = 0;
+      correct = 0;
+      answered = 0;
+      locked = false;
+      els.readingModeBtn.classList.toggle('active', mode === 'reading');
+      els.listeningModeBtn.classList.toggle('active', mode === 'listening');
+      render();
+    }
+
+    async function loadDailyLessons() {
+      try {
+        const res = await fetch('./daily-lessons.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && Array.isArray(data.reading) && Array.isArray(data.listening) && data.reading.length && data.listening.length) {
+          lessonSets = {
+            reading: data.reading,
+            listening: data.listening,
+          };
+        }
+      } catch {
+        // fallback to embedded lessons
+      }
+    }
+
+    function render() {
+      const lesson = currentLessons()[index];
+      locked = false;
+      els.title.textContent = lesson.title;
+      els.mode.textContent = mode === 'reading' ? '閱讀題' : '聽力題';
+      els.prompt.innerHTML = mode === 'reading' ? lesson.prompt : '請播放音訊後作答。';
+      els.romaji.textContent = lesson.romaji || '—';
+      els.romaji.style.display = mode === 'reading' ? 'block' : 'none';
+      els.hint.textContent = lesson.hint || '';
+      els.hint.style.display = lesson.hint ? 'block' : 'none';
+      els.totalCount.textContent = currentLessons().length;
+      els.feedback.className = 'feedback warn';
+      els.feedback.textContent = '請先選擇答案。';
+      els.choices.innerHTML = '';
+
+      shuffled(lesson.choices).forEach((choice) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice';
+        btn.dataset.correct = choice.correct ? '1' : '0';
+        btn.textContent = choice.text;
+        btn.addEventListener('click', () => pick(choice, btn));
+        els.choices.appendChild(btn);
+      });
+
+      els.prevBtn.style.display = 'none';
+      els.prevBtn.disabled = true;
+      els.nextBtn.textContent = index === currentLessons().length - 1 ? '完成 ✓' : '下一題 →';
+      els.speakBtn.style.display = mode === 'listening' ? 'inline-flex' : 'none';
+      updateStats();
+
+      if (mode === 'listening') {
+        window.setTimeout(() => speak(lesson.audio || stripHtml(lesson.prompt)), 180);
+      }
+    }
+
+    function pick(choice, btn) {
+      if (locked) return;
+      locked = true;
+      answered += 1;
+      const allBtns = [...document.querySelectorAll('.choice')];
+
+      if (choice.correct) {
+        correct += 1;
+        btn.classList.add('correct');
+        els.feedback.className = 'feedback good';
+        els.feedback.innerHTML = `✅ 正確！<br>${choice.explain}`;
+      } else {
+        btn.classList.add('wrong');
+        els.feedback.className = 'feedback bad';
+        const correctChoice = currentLessons()[index].choices.find(c => c.correct);
+        els.feedback.innerHTML = `❌ 正確答案是『${correctChoice?.text || ''}』。<br>${choice.explain}`;
+        allBtns.find(b => b.dataset.correct === '1')?.classList.add('correct');
+      }
+
+      allBtns.forEach(b => b.disabled = true);
+      updateStats();
+    }
+
+    function updateStats() {
+      els.correctCount.textContent = correct;
+      els.answeredCount.textContent = answered;
+    }
+
+    els.prevBtn.addEventListener('click', () => {
+      if (index > 0) {
+        index -= 1;
+        render();
+      }
+    });
+
+    els.nextBtn.addEventListener('click', () => {
+      if (index < currentLessons().length - 1) {
+        index += 1;
+        render();
+      } else {
+        els.feedback.className = 'feedback good';
+        els.feedback.textContent = `完成了！你答對 ${correct}/${answered} 題。可以切換模式再練一次。`;
+      }
+    });
+
+    els.readingModeBtn.addEventListener('click', () => setMode('reading'));
+    els.listeningModeBtn.addEventListener('click', () => setMode('listening'));
+    els.speakBtn.addEventListener('click', () => {
+      const lesson = currentLessons()[index];
+      speak(lesson.audio || stripHtml(lesson.prompt));
+    });
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = updateVoiceList;
+      updateVoiceList();
+    }
+
+    loadDailyLessons().finally(() => render());
+  </script>
+</body>
+</html>

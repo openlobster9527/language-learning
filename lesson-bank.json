@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "policy": {
+    "newRatio": 0.7,
+    "reviewRatio": 0.3,
+    "topics": [
+      "餐廳",
+      "車站",
+      "計程車",
+      "公車",
+      "便利商店",
+      "超市",
+      "旅館",
+      "遊樂園",
+      "景點"
+    ]
+  },
+  "lessons": [
+    {
+      "id": "read-001",
+      "topic": "車站",
+      "mode": "reading",
+      "difficulty": 1,
+      "status": "used",
+      "appearedCount": 3,
+      "lastSeen": "2026-05-14",
+      "prompt": "すみません、東京駅はどこですか。"
+    },
+    {
+      "id": "read-002",
+      "topic": "餐廳",
+      "mode": "reading",
+      "difficulty": 1,
+      "status": "used",
+      "appearedCount": 2,
+      "lastSeen": "2026-05-14",
+      "prompt": "これを一つください。"
+    },
+    {
+      "id": "read-003",
+      "topic": "旅館",
+      "mode": "reading",
+      "difficulty": 1,
+      "status": "used",
+      "appearedCount": 2,
+      "lastSeen": "2026-05-14",
+      "prompt": "チェックインをお願いします。"
+    },
+    {
+      "id": "listen-001",
+      "topic": "車站",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 3,
+      "lastSeen": "2026-05-14",
+      "prompt": "この電車は京都に行きますか。"
+    },
+    {
+      "id": "listen-002",
+      "topic": "餐廳",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 3,
+      "lastSeen": "2026-05-14",
+      "prompt": "おすすめはありますか。"
+    },
+    {
+      "id": "listen-003",
+      "topic": "旅館",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-14",
+      "prompt": "朝ごはんは何時ですか。"
+    },
+    {
+      "id": "read-007",
+      "topic": "景點",
+      "mode": "reading",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-14",
+      "prompt": "<span class=\"ph\">写真</span> を撮ってもいいですか。"
+    },
+    {
+      "id": "listen-007",
+      "topic": "超市",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-14",
+      "prompt": "—"
+    },
+    {
+      "id": "read-004",
+      "topic": "計程車",
+      "mode": "reading",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-14",
+      "prompt": "<span class=\"ph\">空港まで</span> お願いします。"
+    },
+    {
+      "id": "listen-004",
+      "topic": "公車",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-14",
+      "prompt": "—"
+    }
+  ]
+}
