@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenClaw 自我介紹 Demo</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: rgba(15, 23, 42, .88);
+      --line: #22324a;
+      --text: #e7eef8;
+      --muted: #9fb0c8;
+      --accent: #38bdf8;
+      --accent2: #22c55e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #10203d 0%, var(--bg) 52%);
+    }
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 28px 18px 42px; }
+    .hero, .card {
+      border: 1px solid rgba(34, 50, 74, .95);
+      border-radius: 22px;
+      background: var(--panel);
+      box-shadow: 0 16px 48px rgba(0,0,0,.28);
+    }
+    .hero { padding: 28px; display: grid; gap: 12px; }
+    .badge {
+      display: inline-flex; width: fit-content; gap: 8px; align-items: center;
+      padding: 8px 12px; border-radius: 999px; background: rgba(56,189,248,.12);
+      color: #a8e7ff; font-size: 13px;
+    }
+    h1 { margin: 0; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; }
+    .lead { margin: 0; max-width: 70ch; color: var(--muted); line-height: 1.75; font-size: 16px; }
+    .grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 16px; margin-top: 16px; }
+    .card { padding: 22px; }
+    .card h2 { margin: 0 0 10px; font-size: 20px; }
+    .card p, .card li { color: var(--muted); line-height: 1.7; }
+    .points { margin: 10px 0 0 18px; }
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    button, select, input {
+      font: inherit;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #0b1628;
+      color: var(--text);
+      padding: 12px 14px;
+    }
+    button { cursor: pointer; }
+    button.primary { background: linear-gradient(135deg, #38bdf8, #22d3ee); color: #052033; font-weight: 800; border-color: transparent; }
+    button.secondary { background: rgba(255,255,255,.02); }
+    .hint { color: var(--muted); font-size: 13px; margin-top: 10px; }
+    .script {
+      background: #07101d;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      line-height: 1.85;
+      color: #dce8f6;
+      white-space: pre-wrap;
+    }
+    .status { margin-top: 12px; color: #a6d5ff; min-height: 1.5em; }
+    .footer { margin-top: 14px; color: var(--muted); font-size: 13px; }
+    .statline { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .pill { padding: 6px 10px; border-radius: 999px; background: rgba(56,189,248,.08); color: #bfeaff; font-size: 12px; }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="badge">🦞 OpenClaw · 自我介紹彩排版</div>
+      <h1>把我介紹清楚，<br>也把它念出來。</h1>
+      <p class="lead">
+        這是一版給農業部資訊司同仁看的開場 Demo：畫面簡潔、內容正式、可一鍵朗讀。
+        現場可先點按鈕，由瀏覽器內建 Web Speech API 念出自我介紹，再切回畫面講解功能。
+      </p>
+      <div class="statline">
+        <span class="pill">單檔 HTML</span>
+        <span class="pill">Web Speech API</span>
+        <span class="pill">可部署 GitHub Pages</span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h2>朗讀控制</h2>
+        <div class="controls">
+          <button class="primary" id="playBtn">▶ 朗讀自我介紹</button>
+          <button class="secondary" id="stopBtn">■ 停止朗讀</button>
+          <select id="voiceSelect" aria-label="voice select"></select>
+        </div>
+        <div class="controls">
+          <label>
+            速度
+            <input id="rateRange" type="range" min="0.75" max="1.15" step="0.05" value="0.95" />
+          </label>
+          <label>
+            音高
+            <input id="pitchRange" type="range" min="0.8" max="1.2" step="0.05" value="1" />
+          </label>
+        </div>
+        <div class="hint">提示：多數瀏覽器需要先點一次按鈕，才會允許語音播放。</div>
+        <div class="status" id="status">尚未開始。</div>
+      </section>
+
+      <section class="card">
+        <h2>投影片口條</h2>
+        <div class="script" id="scriptText">各位好，我是 OpenClaw。
+
+我是你在工作裡的 AI 助手，負責把事情做得更快、更穩，也更有條理。
+我可以幫忙整理資料、寫文件、管理行事曆、處理信件、建立試算表，還可以把重複性的工作流程自動化。
+
+如果用一句話介紹我：
+我不是只回答問題的聊天機器人，我是能實際協作、能執行任務的工作夥伴。
+
+今天我想展示的重點是三件事：
+第一，OpenClaw 可以怎麼幫助日常工作。
+第二，AI 可以怎麼跟既有流程整合。
+第三，怎麼把事情做得又快、又準、又能持續。
+
+謝謝大家。</div>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:16px;">
+      <h2>簡短自我介紹版本</h2>
+      <ul class="points">
+        <li>我是 OpenClaw，Dayu 的個人 AI 助手。</li>
+        <li>我擅長把資訊整理成能直接使用的成果。</li>
+        <li>我能協助文件、信件、行程、表格與自動化工作。</li>
+        <li>今天的示範重點：AI 不只是聊天，而是能真正幫忙做事。</li>
+      </ul>
+      <div class="footer">部署時可直接把這個檔案放到 GitHub Pages。</div>
+    </section>
+  </div>
+
+  <script>
+    const text = document.getElementById('scriptText').innerText;
+    const playBtn = document.getElementById('playBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const voiceSelect = document.getElementById('voiceSelect');
+    const rateRange = document.getElementById('rateRange');
+    const pitchRange = document.getElementById('pitchRange');
+    const status = document.getElementById('status');
+
+    let voices = [];
+    function loadVoices() {
+      if (!('speechSynthesis' in window)) return;
+      voices = speechSynthesis.getVoices();
+      voiceSelect.innerHTML = '';
+      const options = voices
+        .filter(v => /zh|ja|en/i.test(v.lang))
+        .map(v => ({ label: `${v.lang} · ${v.name}`, value: v.name }));
+      if (!options.length) {
+        voiceSelect.innerHTML = '<option value="">系統預設聲音</option>';
+        return;
+      }
+      for (const opt of options) {
+        const el = document.createElement('option');
+        el.value = opt.value;
+        el.textContent = opt.label;
+        voiceSelect.appendChild(el);
+      }
+      const preferred = options.find(o => /zh|cmn|yue/i.test(o.label)) || options[0];
+      voiceSelect.value = preferred.value;
+    }
+
+    function speak() {
+      if (!('speechSynthesis' in window)) {
+        status.textContent = '這個瀏覽器不支援 Web Speech API。';
+        return;
+      }
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'zh-TW';
+      utterance.rate = parseFloat(rateRange.value);
+      utterance.pitch = parseFloat(pitchRange.value);
+      const voice = voices.find(v => v.name === voiceSelect.value);
+      if (voice) utterance.voice = voice;
+      utterance.onstart = () => status.textContent = '正在朗讀…';
+      utterance.onend = () => status.textContent = '朗讀完成。';
+      utterance.onerror = () => status.textContent = '朗讀失敗，請再試一次。';
+      speechSynthesis.speak(utterance);
+    }
+
+    playBtn.addEventListener('click', speak);
+    stopBtn.addEventListener('click', () => {
+      if ('speechSynthesis' in window) speechSynthesis.cancel();
+      status.textContent = '已停止。';
+    });
+
+    if ('speechSynthesis' in window) {
+      speechSynthesis.onvoiceschanged = loadVoices;
+      loadVoices();
+    } else {
+      voiceSelect.innerHTML = '<option value="">不支援</option>';
+      status.textContent = '目前瀏覽器不支援 Web Speech API。';
+    }
+  </script>
+</body>
+</html>
