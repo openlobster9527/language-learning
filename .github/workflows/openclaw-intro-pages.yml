@@ -1,4 +1,4 @@
-name: Deploy OpenClaw intro to GitHub Pages
+name: Deploy site with OpenClaw intro subpath
 
 on:
   workflow_dispatch:
@@ -6,6 +6,13 @@ on:
     branches:
       - main
     paths:
+      - 'index.html'
+      - 'README.md'
+      - 'daily-lessons.json'
+      - 'lesson-bank.json'
+      - 'lesson-catalog.json'
+      - 'scripts/**'
+      - 'language-learning/**'
       - 'openclaw-intro/**'
       - '.github/workflows/openclaw-intro-pages.yml'
 
@@ -28,13 +35,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Build site artifact
+        run: |
+          rm -rf site
+          mkdir -p site
+          rsync -a --exclude '.git' --exclude '.github' ./ site/
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./openclaw-intro
+          path: ./site
 
       - name: Deploy to GitHub Pages
         id: deployment
