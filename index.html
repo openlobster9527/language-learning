@@ -348,7 +348,8 @@
         els.choices.appendChild(btn);
       });
 
-      els.prevBtn.disabled = index === 0;
+      els.prevBtn.style.display = 'none';
+      els.prevBtn.disabled = true;
       els.nextBtn.textContent = index === currentLessons().length - 1 ? '完成 ✓' : '下一題 →';
       els.speakBtn.style.display = mode === 'listening' ? 'inline-flex' : 'none';
       updateStats();
@@ -372,7 +373,8 @@
       } else {
         btn.classList.add('wrong');
         els.feedback.className = 'feedback bad';
-        els.feedback.innerHTML = `❌ 這不是正解。<br>${choice.explain}`;
+        const correctChoice = currentLessons()[index].choices.find(c => c.correct);
+        els.feedback.innerHTML = `❌ 正確答案是『${correctChoice?.text || ''}』。<br>${choice.explain}`;
         allBtns.find(b => b.dataset.correct === '1')?.classList.add('correct');
       }
 
