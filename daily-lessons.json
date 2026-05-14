@@ -1,0 +1,153 @@
+{
+  "date": "2026-05-14",
+  "timezone": "Asia/Taipei",
+  "source": "lesson-catalog.json",
+  "reading": [
+    {
+      "title": "車站情境",
+      "prompt": "すみません、<span class=\"ph\">東京駅</span>はどこですか。",
+      "romaji": "Sumimasen, Tōkyō-eki wa doko desu ka.",
+      "hint": "",
+      "audio": "すみません、東京駅はどこですか。",
+      "choices": [
+        {
+          "text": "請問，東京車站在哪裡？",
+          "correct": true,
+          "explain": "對。 すみません = 不好意思 / 請問，どこですか = 在哪裡？"
+        },
+        {
+          "text": "不好意思，我要買票。",
+          "correct": false,
+          "explain": "這句意思不對。 這題是在問位置，不是買票。"
+        },
+        {
+          "text": "請問，幾點發車？",
+          "correct": false,
+          "explain": "這題是「在哪裡」，不是問時間。"
+        }
+      ]
+    },
+    {
+      "title": "餐廳情境",
+      "prompt": "これを <span class=\"ph\">一つ</span> ください。",
+      "romaji": "Kore o hitotsu kudasai.",
+      "hint": "",
+      "audio": "これを一つください。",
+      "choices": [
+        {
+          "text": "請給我一個這個。",
+          "correct": true,
+          "explain": "對。 これ = 這個，ひとつ / 一つ = 一個，ください = 請給我。"
+        },
+        {
+          "text": "請給我兩個這個。",
+          "correct": false,
+          "explain": "數量不對。 一つ是 1 個。"
+        },
+        {
+          "text": "這個太貴了。",
+          "correct": false,
+          "explain": "這句不是點餐句。"
+        }
+      ]
+    },
+    {
+      "title": "計程車情境",
+      "prompt": "<span class=\"ph\">空港まで</span> お願いします。",
+      "romaji": "Kūkō made onegaishimasu.",
+      "hint": "",
+      "audio": "空港までお願いします。",
+      "choices": [
+        {
+          "text": "請到機場。",
+          "correct": true,
+          "explain": "對。 まで = 到／到達，お願いします = 麻煩你。"
+        },
+        {
+          "text": "請問機場在哪裡？",
+          "correct": false,
+          "explain": "這句是指目的地，不是問位置。"
+        },
+        {
+          "text": "我要等一下。",
+          "correct": false,
+          "explain": "意思不同。"
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "title": "餐廳情境",
+      "prompt": "—",
+      "romaji": "Osusume wa arimasu ka.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "おすすめはありますか。",
+      "choices": [
+        {
+          "text": "有推薦的嗎？",
+          "correct": true,
+          "explain": "對。 おすすめ = 推薦。"
+        },
+        {
+          "text": "可以外帶嗎？",
+          "correct": false,
+          "explain": "這句是在問推薦，不是外帶。"
+        },
+        {
+          "text": "要加辣嗎？",
+          "correct": false,
+          "explain": "意思不同。"
+        }
+      ]
+    },
+    {
+      "title": "月台情境",
+      "prompt": "—",
+      "romaji": "Kono densha wa Kyōto ni ikimasu ka.",
+      "hint": "先聽題，再選最適合的答案。",
+      "audio": "この電車は京都に行きますか。",
+      "choices": [
+        {
+          "text": "這班電車會去京都嗎？",
+          "correct": true,
+          "explain": "對。 この電車は = 這班電車，京都に行きますか = 會去京都嗎？"
+        },
+        {
+          "text": "這班電車幾點出發？",
+          "correct": false,
+          "explain": "這句是問目的地，不是時間。"
+        },
+        {
+          "text": "請問這裡可以買票嗎？",
+          "correct": false,
+          "explain": "這句是在問購票，不是方向。"
+        }
+      ]
+    },
+    {
+      "title": "公車情境",
+      "prompt": "—",
+      "romaji": "Tsugi no basu wa nanji desu ka.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "次のバスは何時ですか。",
+      "choices": [
+        {
+          "text": "下一班公車幾點？",
+          "correct": true,
+          "explain": "對。 次のバス = 下一班公車。"
+        },
+        {
+          "text": "公車站在哪裡？",
+          "correct": false,
+          "explain": "這句是在問時間，不是位置。"
+        },
+        {
+          "text": "這班公車去哪裡？",
+          "correct": false,
+          "explain": "意思不同。"
+        }
+      ]
+    }
+  ]
+}

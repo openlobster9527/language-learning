@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "lessons": [
+    {
+      "id": "read-001",
+      "topic": "車站",
+      "mode": "reading",
+      "difficulty": 1,
+      "title": "車站情境",
+      "prompt": "すみません、<span class=\"ph\">東京駅</span>はどこですか。",
+      "romaji": "Sumimasen, Tōkyō-eki wa doko desu ka.",
+      "hint": "",
+      "audio": "すみません、東京駅はどこですか。",
+      "choices": [
+        { "text": "請問，東京車站在哪裡？", "correct": true, "explain": "對。 すみません = 不好意思 / 請問，どこですか = 在哪裡？" },
+        { "text": "不好意思，我要買票。", "correct": false, "explain": "這句意思不對。 這題是在問位置，不是買票。" },
+        { "text": "請問，幾點發車？", "correct": false, "explain": "這題是「在哪裡」，不是問時間。" }
+      ]
+    },
+    {
+      "id": "read-002",
+      "topic": "餐廳",
+      "mode": "reading",
+      "difficulty": 1,
+      "title": "餐廳情境",
+      "prompt": "これを <span class=\"ph\">一つ</span> ください。",
+      "romaji": "Kore o hitotsu kudasai.",
+      "hint": "",
+      "audio": "これを一つください。",
+      "choices": [
+        { "text": "請給我一個這個。", "correct": true, "explain": "對。 これ = 這個，ひとつ / 一つ = 一個，ください = 請給我。" },
+        { "text": "請給我兩個這個。", "correct": false, "explain": "數量不對。 一つ是 1 個。" },
+        { "text": "這個太貴了。", "correct": false, "explain": "這句不是點餐句。" }
+      ]
+    },
+    {
+      "id": "read-003",
+      "topic": "旅館",
+      "mode": "reading",
+      "difficulty": 1,
+      "title": "飯店情境",
+      "prompt": "チェックインを <span class=\"ph\">お願いします</span>。",
+      "romaji": "Chekkuin o onegaishimasu.",
+      "hint": "",
+      "audio": "チェックインをお願いします。",
+      "choices": [
+        { "text": "我要辦理入住。", "correct": true, "explain": "對。 チェックイン = check-in，お願いします = 麻煩你 / 拜託。" },
+        { "text": "我要退房。", "correct": false, "explain": "退房是 チェックアウト。" },
+        { "text": "請給我一張地圖。", "correct": false, "explain": "不是這個意思。" }
+      ]
+    },
+    {
+      "id": "read-004",
+      "topic": "計程車",
+      "mode": "reading",
+      "difficulty": 2,
+      "title": "計程車情境",
+      "prompt": "<span class=\"ph\">空港まで</span> お願いします。",
+      "romaji": "Kūkō made onegaishimasu.",
+      "hint": "",
+      "audio": "空港までお願いします。",
+      "choices": [
+        { "text": "請到機場。", "correct": true, "explain": "對。 まで = 到／到達，お願いします = 麻煩你。" },
+        { "text": "請問機場在哪裡？", "correct": false, "explain": "這句是指目的地，不是問位置。" },
+        { "text": "我要等一下。", "correct": false, "explain": "意思不同。" }
+      ]
+    },
+    {
+      "id": "read-005",
+      "topic": "便利商店",
+      "mode": "reading",
+      "difficulty": 2,
+      "title": "便利商店情境",
+      "prompt": "<span class=\"ph\">袋</span> はいりません。",
+      "romaji": "Fukuro wa irimasen.",
+      "hint": "",
+      "audio": "袋はいりません。",
+      "choices": [
+        { "text": "我不需要袋子。", "correct": true, "explain": "對。 いりません = 不需要。" },
+        { "text": "我要兩個袋子。", "correct": false, "explain": "意思相反。" },
+        { "text": "請結帳。", "correct": false, "explain": "不是這個意思。" }
+      ]
+    },
+    {
+      "id": "read-006",
+      "topic": "超市",
+      "mode": "reading",
+      "difficulty": 2,
+      "title": "超市情境",
+      "prompt": "<span class=\"ph\">これは</span> いくらですか。",
+      "romaji": "Kore wa ikura desu ka.",
+      "hint": "",
+      "audio": "これはいくらですか。",
+      "choices": [
+        { "text": "這個多少錢？", "correct": true, "explain": "對。 いくらですか = 多少錢？" },
+        { "text": "這個在哪裡？", "correct": false, "explain": "這句不是問位置。" },
+        { "text": "可以刷卡嗎？", "correct": false, "explain": "意思不同。" }
+      ]
+    },
+    {
+      "id": "read-007",
+      "topic": "景點",
+      "mode": "reading",
+      "difficulty": 2,
+      "title": "景點情境",
+      "prompt": "<span class=\"ph\">写真</span> を撮ってもいいですか。",
+      "romaji": "Shashin o totte mo ii desu ka.",
+      "hint": "",
+      "audio": "写真を撮ってもいいですか。",
+      "choices": [
+        { "text": "我可以拍照嗎？", "correct": true, "explain": "對。 〜てもいいですか = 可以嗎？" },
+        { "text": "照片在哪裡？", "correct": false, "explain": "不是問位置。" },
+        { "text": "要不要買票？", "correct": false, "explain": "意思不同。" }
+      ]
+    },
+    {
+      "id": "listen-001",
+      "topic": "車站",
+      "mode": "listening",
+      "difficulty": 2,
+      "title": "月台情境",
+      "prompt": "—",
+      "romaji": "Kono densha wa Kyōto ni ikimasu ka.",
+      "hint": "先聽題，再選最適合的答案。",
+      "audio": "この電車は京都に行きますか。",
+      "choices": [
+        { "text": "這班電車會去京都嗎？", "correct": true, "explain": "對。 この電車は = 這班電車，京都に行きますか = 會去京都嗎？" },
+        { "text": "這班電車幾點出發？", "correct": false, "explain": "這句是問目的地，不是時間。" },
+        { "text": "請問這裡可以買票嗎？", "correct": false, "explain": "這句是在問購票，不是方向。" }
+      ]
+    },
+    {
+      "id": "listen-002",
+      "topic": "餐廳",
+      "mode": "listening",
+      "difficulty": 2,
+      "title": "餐廳情境",
+      "prompt": "—",
+      "romaji": "Osusume wa arimasu ka.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "おすすめはありますか。",
+      "choices": [
+        { "text": "有推薦的嗎？", "correct": true, "explain": "對。 おすすめ = 推薦。" },
+        { "text": "可以外帶嗎？", "correct": false, "explain": "這句是在問推薦，不是外帶。" },
+        { "text": "要加辣嗎？", "correct": false, "explain": "意思不同。" }
+      ]
+    },
+    {
+      "id": "listen-003",
+      "topic": "旅館",
+      "mode": "listening",
+      "difficulty": 2,
+      "title": "飯店情境",
+      "prompt": "—",
+      "romaji": "Asa-gohan wa nanji desu ka.",
+      "hint": "請先播放音訊，再作答。",
+      "audio": "朝ごはんは何時ですか。",
+      "choices": [
+        { "text": "早餐幾點？", "correct": true, "explain": "對。 朝ごはん = 早餐，何時ですか = 幾點？" },
+        { "text": "早餐有幾種？", "correct": false, "explain": "這句是問時間，不是種類。" },
+        { "text": "退房時間是幾點？", "correct": false, "explain": "這句是在問退房，不是早餐。" }
+      ]
+    },
+    {
+      "id": "listen-004",
+      "topic": "公車",
+      "mode": "listening",
+      "difficulty": 2,
+      "title": "公車情境",
+      "prompt": "—",
+      "romaji": "Tsugi no basu wa nanji desu ka.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "次のバスは何時ですか。",
+      "choices": [
+        { "text": "下一班公車幾點？", "correct": true, "explain": "對。 次のバス = 下一班公車。" },
+        { "text": "公車站在哪裡？", "correct": false, "explain": "這句是在問時間，不是位置。" },
+        { "text": "這班公車去哪裡？", "correct": false, "explain": "意思不同。" }
+      ]
+    },
+    {
+      "id": "listen-005",
+      "topic": "便利商店",
+      "mode": "listening",
+      "difficulty": 2,
+      "title": "便利商店情境",
+      "prompt": "—",
+      "romaji": "ATM wa arimasu ka.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "ATMはありますか。",
+      "choices": [
+        { "text": "有 ATM 嗎？", "correct": true, "explain": "對。 ありますか = 有嗎？" },
+        { "text": "可以刷卡嗎？", "correct": false, "explain": "這句是在問 ATM，不是刷卡。" },
+        { "text": "可以買水嗎？", "correct": false, "explain": "意思不同。" }
+      ]
+    },
+    {
+      "id": "listen-006",
+      "topic": "計程車",
+      "mode": "listening",
+      "difficulty": 2,
+      "title": "計程車情境",
+      "prompt": "—",
+      "romaji": "Kūkō made onegaishimasu.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "空港までお願いします。",
+      "choices": [
+        { "text": "請到機場。", "correct": true, "explain": "對。 まで = 到／到達。" },
+        { "text": "請問機場在哪裡？", "correct": false, "explain": "這句不是目的地。" },
+        { "text": "我想要下車。", "correct": false, "explain": "意思不同。" }
+      ]
+    },
+    {
+      "id": "listen-007",
+      "topic": "超市",
+      "mode": "listening",
+      "difficulty": 2,
+      "title": "超市情境",
+      "prompt": "—",
+      "romaji": "Kore wa dore desu ka.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "これはどれですか。",
+      "choices": [
+        { "text": "哪一個是這個？", "correct": true, "explain": "對。 どれ = 哪一個。" },
+        { "text": "這個多少錢？", "correct": false, "explain": "這句不是問價格。" },
+        { "text": "這個可以嗎？", "correct": false, "explain": "意思不同。" }
+      ]
+    }
+  ]
+}

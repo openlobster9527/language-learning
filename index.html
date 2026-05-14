@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>小龍蝦 Language Lab｜日文旅遊會話 Demo</title>
+      <title>小龍蝦 Language Lab｜日文旅遊會話練習</title>
   <style>
     :root {
       --bg: #0b1220;
@@ -42,10 +42,20 @@
     .muted { color: var(--muted); font-size: 14px; line-height: 1.65; }
     .stack { display: grid; gap: 12px; }
     .scenario-title { font-size: 20px; margin: 0; }
-    .jp { font-size: 18px; color: #dbeafe; }
+    .jp { font-size: 18px; color: #dbeafe; line-height: 1.8; }
+    .romaji { color: #9fb0c8; font-size: 14px; line-height: 1.6; }
+    .prompt-shell {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #0b1220;
+      display: grid;
+      gap: 10px;
+    }
+    .prompt-note { color: #9dd6ff; font-size: 13px; }
     .ph { color: #9dd6ff; font-weight: 700; }
-    .choice-grid { display: grid; gap: 10px; margin-top: 14px; }
-    button.choice, button.nav {
+    .modebar { display: flex; gap: 10px; flex-wrap: wrap; }
+    button.choice, button.nav, button.mode {
       border: 1px solid var(--line);
       background: var(--card2);
       color: var(--text);
@@ -56,7 +66,9 @@
       cursor: pointer;
       transition: transform .06s ease, border-color .12s ease, background .12s ease;
     }
-    button.choice:hover, button.nav:hover { transform: translateY(-1px); border-color: #3b82f6; }
+    button.choice:hover, button.nav:hover, button.mode:hover { transform: translateY(-1px); border-color: #3b82f6; }
+    button.mode.active { border-color: rgba(56,189,248,.9); background: rgba(56,189,248,.14); }
+    button.nav.primary { background: linear-gradient(135deg, #38bdf8, #22d3ee); color: #062033; border-color: transparent; font-weight: 800; }
     button.choice.correct { border-color: rgba(34,197,94,.9); background: rgba(34,197,94,.12); }
     button.choice.wrong { border-color: rgba(239,68,68,.9); background: rgba(239,68,68,.12); }
     .feedback {
@@ -72,8 +84,6 @@
     .feedback.bad { border-color: rgba(239,68,68,.6); }
     .feedback.warn { border-color: rgba(245,158,11,.6); }
     .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-    .nav.primary { background: linear-gradient(135deg, #38bdf8, #22d3ee); color: #062033; border-color: transparent; font-weight: 800; }
-    .nav.secondary { background: transparent; }
     .stats { display: grid; gap: 10px; grid-template-columns: repeat(3,1fr); }
     .stat { padding: 14px; background: #0b1220; border: 1px solid var(--line); border-radius: 14px; }
     .stat .k { color: var(--muted); font-size: 12px; }
@@ -90,24 +100,35 @@
 <body>
   <div class="wrap">
     <section class="hero">
-      <div class="badge">🦞 小龍蝦 Language Lab · GitHub Pages Demo</div>
+      <div class="badge">🦞 小龍蝦 Language Lab · 日文旅遊會話練習</div>
       <div class="eyebrow">Japanese Travel Conversation</div>
-      <h1>日文旅遊會話互動 Demo</h1>
-      <p class="lead">這版是示範用的互動頁：每題都是旅遊場景，你選答案、立刻看解釋。之後可以接成電子報、每日複習或進階情境練習。</p>
+      <h1>日文旅遊會話練習</h1>
+      <p class="lead">以情境式題目練習旅遊常用日文；作答後再參考中文解釋。</p>
     </section>
 
     <div class="layout">
       <section class="panel">
         <div class="stack">
           <div>
-            <div class="muted">Scenario</div>
+            <div class="muted">情境</div>
             <h2 class="scenario-title" id="scenarioTitle">—</h2>
           </div>
-          <div class="jp" id="scenarioPrompt">—</div>
-          <div class="muted" id="scenarioHint">—</div>
+
+          <div class="modebar">
+            <button class="mode active" id="readingModeBtn">閱讀題</button>
+            <button class="mode" id="listeningModeBtn">聽力題</button>
+            <button class="mode" id="speakBtn">▶ 播放音訊</button>
+          </div>
+
+          <div class="prompt-shell">
+            <div class="prompt-note" id="scenarioMode">—</div>
+            <div class="jp" id="scenarioPrompt">—</div>
+            <div class="romaji" id="scenarioRomaji">—</div>
+            <div class="muted" id="scenarioHint">—</div>
+          </div>
 
           <div class="choice-grid" id="choices"></div>
-          <div class="feedback warn" id="feedback">先選一個答案。</div>
+          <div class="feedback warn" id="feedback">請先選擇答案。</div>
 
           <div class="actions">
             <button class="nav secondary" id="prevBtn">← 上一題</button>
@@ -119,7 +140,7 @@
       <aside class="stack">
         <section class="card">
           <h3>學習目標</h3>
-          <div class="muted">快速學會：問路、點餐、入住、搭車。每題都先看日文，再用中文理解意思。</div>
+          <div class="muted">練習問路、點餐、入住與乘車等常用表達。</div>
         </section>
 
         <section class="card">
@@ -132,61 +153,111 @@
         </section>
 
         <section class="card mini">
-          <h3>你會看到的內容</h3>
+          <h3>練習內容</h3>
           <ul>
-            <li>旅遊場景一句話</li>
-            <li>多個選項，選完立刻回饋</li>
-            <li>正解 + 中文解釋 + 例句</li>
+            <li>情境式日文句子</li>
+            <li>作答後顯示中文解釋</li>
+            <li>聽力題可播放日文音檔</li>
           </ul>
         </section>
       </aside>
     </div>
 
-    <p class="footer">Next: 加上單字卡、語音、與「點擊後直接到下一個情境」的完整學習流程。</p>
+    <p class="footer">後續可加入單字卡、更多題型與自動進階流程。</p>
   </div>
 
   <script>
-    const lessons = [
-      {
-        title: '在車站問路',
-        prompt: 'すみません、<span class="ph">東京駅</span>はどこですか。',
-        hint: '你在站內想問「東京車站在哪裡？」',
-        choices: [
-          { text: '請問，東京車站在哪裡？', correct: true, explain: '對。 すみません = 不好意思 / 請問，どこですか = 在哪裡？' },
-          { text: '不好意思，我要買票。', correct: false, explain: '這句意思不對。 這題是在問位置，不是買票。' },
-          { text: '請問，幾點發車？', correct: false, explain: '這題是「在哪裡」，不是問時間。' },
-        ],
-      },
-      {
-        title: '在餐廳點餐',
-        prompt: 'これを <span class="ph">一つ</span> ください。',
-        hint: '看到菜單後，你想說「請給我一個這個」',
-        choices: [
-          { text: '請給我一個這個。', correct: true, explain: '對。 これ = 這個，ひとつ / 一つ = 一個，ください = 請給我。' },
-          { text: '請給我兩個這個。', correct: false, explain: '數量不對。 一つ是 1 個。' },
-          { text: '這個太貴了。', correct: false, explain: '這句不是點餐句。' },
-        ],
-      },
-      {
-        title: '入住飯店',
-        prompt: 'チェックインを <span class="ph">お願いします</span>。',
-        hint: '你到飯店櫃台，想辦理入住。',
-        choices: [
-          { text: '我要辦理入住。', correct: true, explain: '對。 チェックイン = check-in，お願いします = 麻煩你 / 拜託。' },
-          { text: '我要退房。', correct: false, explain: '退房是 チェックアウト。' },
-          { text: '請給我一張地圖。', correct: false, explain: '不是這個意思。' },
-        ],
-      },
-    ];
+    let lessonSets = {
+      reading: [
+        {
+          title: '車站情境',
+          prompt: 'すみません、<span class="ph">東京駅</span>はどこですか。',
+          romaji: 'Sumimasen, Tōkyō-eki wa doko desu ka.',
+          hint: '',
+          audio: 'すみません、東京駅はどこですか。',
+          choices: [
+            { text: '請問，東京車站在哪裡？', correct: true, explain: '對。 すみません = 不好意思 / 請問，どこですか = 在哪裡？' },
+            { text: '不好意思，我要買票。', correct: false, explain: '這句意思不對。 這題是在問位置，不是買票。' },
+            { text: '請問，幾點發車？', correct: false, explain: '這題是「在哪裡」，不是問時間。' },
+          ],
+        },
+        {
+          title: '餐廳情境',
+          prompt: 'これを <span class="ph">一つ</span> ください。',
+          romaji: 'Kore o hitotsu kudasai.',
+          hint: '',
+          audio: 'これを一つください。',
+          choices: [
+            { text: '請給我一個這個。', correct: true, explain: '對。 これ = 這個，ひとつ / 一つ = 一個，ください = 請給我。' },
+            { text: '請給我兩個這個。', correct: false, explain: '數量不對。 一つ是 1 個。' },
+            { text: '這個太貴了。', correct: false, explain: '這句不是點餐句。' },
+          ],
+        },
+        {
+          title: '飯店情境',
+          prompt: 'チェックインを <span class="ph">お願いします</span>。',
+          romaji: 'Chekkuin o onegaishimasu.',
+          hint: '',
+          audio: 'チェックインをお願いします。',
+          choices: [
+            { text: '我要辦理入住。', correct: true, explain: '對。 チェックイン = check-in，お願いします = 麻煩你 / 拜託。' },
+            { text: '我要退房。', correct: false, explain: '退房是 チェックアウト。' },
+            { text: '請給我一張地圖。', correct: false, explain: '不是這個意思。' },
+          ],
+        },
+      ],
+      listening: [
+        {
+          title: '月台情境',
+          prompt: '—',
+          romaji: 'Kono densha wa Kyōto ni ikimasu ka.',
+          hint: '先聽題，再選最適合的答案。',
+          audio: 'この電車は京都に行きますか。',
+          choices: [
+            { text: '這班電車會去京都嗎？', correct: true, explain: '對。 この電車は = 這班電車，京都に行きますか = 會去京都嗎？' },
+            { text: '這班電車幾點出發？', correct: false, explain: '這句是問目的地，不是時間。' },
+            { text: '請問這裡可以買票嗎？', correct: false, explain: '這句是在問購票，不是方向。' },
+          ],
+        },
+        {
+          title: '餐廳情境',
+          prompt: '—',
+          romaji: 'Osusume wa arimasu ka.',
+          hint: '先聽題，再選最接近的意思。',
+          audio: 'おすすめはありますか。',
+          choices: [
+            { text: '有推薦的嗎？', correct: true, explain: '對。 おすすめ = 推薦。' },
+            { text: '可以外帶嗎？', correct: false, explain: '這句是在問推薦，不是外帶。' },
+            { text: '要加辣嗎？', correct: false, explain: '意思不同。' },
+          ],
+        },
+        {
+          title: '飯店情境',
+          prompt: '—',
+          romaji: 'Asa-gohan wa nanji desu ka.',
+          hint: '請先播放音訊，再作答。',
+          audio: '朝ごはんは何時ですか。',
+          choices: [
+            { text: '早餐幾點？', correct: true, explain: '對。 朝ごはん = 早餐，何時ですか = 幾點？' },
+            { text: '早餐有幾種？', correct: false, explain: '這句是問時間，不是種類。' },
+            { text: '退房時間是幾點？', correct: false, explain: '這句是在問退房，不是早餐。' },
+          ],
+        },
+      ],
+    };
 
+    let mode = 'reading';
     let index = 0;
     let correct = 0;
     let answered = 0;
     let locked = false;
+    let voices = [];
 
     const els = {
       title: document.getElementById('scenarioTitle'),
+      mode: document.getElementById('scenarioMode'),
       prompt: document.getElementById('scenarioPrompt'),
+      romaji: document.getElementById('scenarioRomaji'),
       hint: document.getElementById('scenarioHint'),
       choices: document.getElementById('choices'),
       feedback: document.getElementById('feedback'),
@@ -195,17 +266,76 @@
       correctCount: document.getElementById('correctCount'),
       answeredCount: document.getElementById('answeredCount'),
       totalCount: document.getElementById('totalCount'),
+      readingModeBtn: document.getElementById('readingModeBtn'),
+      listeningModeBtn: document.getElementById('listeningModeBtn'),
+      speakBtn: document.getElementById('speakBtn'),
     };
 
+    const stripHtml = (s) => s.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
+    const currentLessons = () => lessonSets[mode];
+
+    function updateVoiceList() {
+      if (!('speechSynthesis' in window)) return;
+      voices = window.speechSynthesis.getVoices();
+    }
+
+    function speak(text) {
+      if (!('speechSynthesis' in window)) {
+        els.feedback.className = 'feedback bad';
+        els.feedback.textContent = '目前瀏覽器不支援語音播放功能。';
+        return;
+      }
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ja-JP';
+      utterance.rate = 0.95;
+      utterance.pitch = 1;
+      const jaVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ja'));
+      if (jaVoice) utterance.voice = jaVoice;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function setMode(nextMode) {
+      if (mode === nextMode) return;
+      mode = nextMode;
+      index = 0;
+      correct = 0;
+      answered = 0;
+      locked = false;
+      els.readingModeBtn.classList.toggle('active', mode === 'reading');
+      els.listeningModeBtn.classList.toggle('active', mode === 'listening');
+      render();
+    }
+
+    async function loadDailyLessons() {
+      try {
+        const res = await fetch('./daily-lessons.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && Array.isArray(data.reading) && Array.isArray(data.listening) && data.reading.length && data.listening.length) {
+          lessonSets = {
+            reading: data.reading,
+            listening: data.listening,
+          };
+        }
+      } catch {
+        // fallback to embedded lessons
+      }
+    }
+
     function render() {
-      const lesson = lessons[index];
+      const lesson = currentLessons()[index];
       locked = false;
       els.title.textContent = lesson.title;
-      els.prompt.innerHTML = lesson.prompt;
-      els.hint.textContent = lesson.hint;
-      els.totalCount.textContent = lessons.length;
+      els.mode.textContent = mode === 'reading' ? '閱讀題' : '聽力題';
+      els.prompt.innerHTML = mode === 'reading' ? lesson.prompt : '請播放音訊後作答。';
+      els.romaji.textContent = lesson.romaji || '—';
+      els.romaji.style.display = mode === 'reading' ? 'block' : 'none';
+      els.hint.textContent = lesson.hint || '';
+      els.hint.style.display = lesson.hint ? 'block' : 'none';
+      els.totalCount.textContent = currentLessons().length;
       els.feedback.className = 'feedback warn';
-      els.feedback.textContent = '先選一個答案。';
+      els.feedback.textContent = '請先選擇答案。';
       els.choices.innerHTML = '';
 
       lesson.choices.forEach((choice) => {
@@ -217,8 +347,13 @@
       });
 
       els.prevBtn.disabled = index === 0;
-      els.nextBtn.textContent = index === lessons.length - 1 ? '完成 ✓' : '下一題 →';
+      els.nextBtn.textContent = index === currentLessons().length - 1 ? '完成 ✓' : '下一題 →';
+      els.speakBtn.style.display = mode === 'listening' ? 'inline-flex' : 'none';
       updateStats();
+
+      if (mode === 'listening') {
+        window.setTimeout(() => speak(lesson.audio || stripHtml(lesson.prompt)), 180);
+      }
     }
 
     function pick(choice, btn) {
@@ -236,7 +371,8 @@
         btn.classList.add('wrong');
         els.feedback.className = 'feedback bad';
         els.feedback.innerHTML = `❌ 這不是正解。<br>${choice.explain}`;
-        allBtns.find(b => b.textContent === lessons[index].choices.find(c => c.correct).text)?.classList.add('correct');
+        const correctText = currentLessons()[index].choices.find(c => c.correct).text;
+        allBtns.find(b => b.textContent === correctText)?.classList.add('correct');
       }
 
       allBtns.forEach(b => b.disabled = true);
@@ -256,16 +392,28 @@
     });
 
     els.nextBtn.addEventListener('click', () => {
-      if (index < lessons.length - 1) {
+      if (index < currentLessons().length - 1) {
         index += 1;
         render();
       } else {
         els.feedback.className = 'feedback good';
-        els.feedback.textContent = `完成了！你答對 ${correct}/${answered} 題。下一步可以加語音、更多情境和每日複習。`;
+        els.feedback.textContent = `完成了！你答對 ${correct}/${answered} 題。可以切換模式再練一次。`;
       }
     });
 
-    render();
+    els.readingModeBtn.addEventListener('click', () => setMode('reading'));
+    els.listeningModeBtn.addEventListener('click', () => setMode('listening'));
+    els.speakBtn.addEventListener('click', () => {
+      const lesson = currentLessons()[index];
+      speak(lesson.audio || stripHtml(lesson.prompt));
+    });
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = updateVoiceList;
+      updateVoiceList();
+    }
+
+    loadDailyLessons().finally(() => render());
   </script>
 </body>
 </html>
