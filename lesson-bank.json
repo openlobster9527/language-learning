@@ -22,8 +22,8 @@
       "mode": "reading",
       "difficulty": 1,
       "status": "used",
-      "appearedCount": 3,
-      "lastSeen": "2026-05-14",
+      "appearedCount": 4,
+      "lastSeen": "2026-05-15",
       "prompt": "すみません、東京駅はどこですか。"
     },
     {
@@ -32,8 +32,8 @@
       "mode": "reading",
       "difficulty": 1,
       "status": "used",
-      "appearedCount": 2,
-      "lastSeen": "2026-05-14",
+      "appearedCount": 3,
+      "lastSeen": "2026-05-15",
       "prompt": "これを一つください。"
     },
     {
@@ -52,8 +52,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 3,
-      "lastSeen": "2026-05-14",
+      "appearedCount": 4,
+      "lastSeen": "2026-05-15",
       "prompt": "この電車は京都に行きますか。"
     },
     {
@@ -112,8 +112,88 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
+      "appearedCount": 2,
+      "lastSeen": "2026-05-15",
+      "prompt": "—"
+    },
+    {
+      "id": "read-006",
+      "topic": "超市",
+      "mode": "reading",
+      "difficulty": 2,
+      "status": "used",
       "appearedCount": 1,
-      "lastSeen": "2026-05-14",
+      "lastSeen": "2026-05-15",
+      "prompt": "<span class=\"ph\">これは</span> いくらですか。"
+    },
+    {
+      "id": "listen-006",
+      "topic": "計程車",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-15",
+      "prompt": "—"
+    },
+    {
+      "id": "read-008",
+      "topic": "遊樂園",
+      "mode": "reading",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-15",
+      "prompt": "入場券はどこで買えますか。"
+    },
+    {
+      "id": "read-009",
+      "topic": "旅館",
+      "mode": "reading",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-15",
+      "prompt": "チェックアウトは何時ですか。"
+    },
+    {
+      "id": "read-010",
+      "topic": "景點",
+      "mode": "reading",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-15",
+      "prompt": "この写真を撮ってもいいですか。"
+    },
+    {
+      "id": "listen-008",
+      "topic": "便利商店",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-15",
+      "prompt": "—"
+    },
+    {
+      "id": "listen-009",
+      "topic": "景點",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-15",
+      "prompt": "—"
+    },
+    {
+      "id": "listen-010",
+      "topic": "遊樂園",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-15",
       "prompt": "—"
     }
   ]

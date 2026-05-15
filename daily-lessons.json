@@ -1,75 +1,81 @@
 {
-  "date": "2026-05-14",
+  "date": "2026-05-15",
   "timezone": "Asia/Taipei",
   "source": "lesson-catalog.json",
   "reading": [
     {
-      "title": "車站情境",
-      "prompt": "すみません、<span class=\"ph\">東京駅</span>はどこですか。",
-      "romaji": "Sumimasen, Tōkyō-eki wa doko desu ka.",
+      "topic": "遊樂園",
+      "difficulty": 2,
+      "title": "遊樂園情境",
+      "prompt": "入場券はどこで買えますか。",
+      "romaji": "Nyūjōken wa doko de kaemasu ka.",
       "hint": "",
-      "audio": "すみません、東京駅はどこですか。",
+      "audio": "入場券はどこで買えますか。",
       "choices": [
         {
-          "text": "請問，東京車站在哪裡？",
+          "text": "入場券在哪裡買？",
           "correct": true,
-          "explain": "對。 すみません = 不好意思 / 請問，どこですか = 在哪裡？"
+          "explain": "對。 どこで = 在哪裡、買えますか = 可以買嗎？"
         },
         {
-          "text": "不好意思，我要買票。",
+          "text": "遊樂園幾點開門？",
           "correct": false,
-          "explain": "這句意思不對。 這題是在問位置，不是買票。"
+          "explain": "這句是在問購票地點，不是開門時間。"
         },
         {
-          "text": "請問，幾點發車？",
+          "text": "可以退票嗎？",
           "correct": false,
-          "explain": "這題是「在哪裡」，不是問時間。"
+          "explain": "意思不同。"
         }
       ]
     },
     {
-      "title": "餐廳情境",
-      "prompt": "これを <span class=\"ph\">一つ</span> ください。",
-      "romaji": "Kore o hitotsu kudasai.",
+      "topic": "旅館",
+      "difficulty": 2,
+      "title": "退房情境",
+      "prompt": "チェックアウトは何時ですか。",
+      "romaji": "Chekkuauto wa nanji desu ka.",
       "hint": "",
-      "audio": "これを一つください。",
+      "audio": "チェックアウトは何時ですか。",
       "choices": [
         {
-          "text": "請給我一個這個。",
+          "text": "退房時間是幾點？",
           "correct": true,
-          "explain": "對。 これ = 這個，ひとつ / 一つ = 一個，ください = 請給我。"
+          "explain": "對。 チェックアウト = 退房、何時ですか = 幾點？"
         },
         {
-          "text": "請給我兩個這個。",
+          "text": "入住時間是幾點？",
           "correct": false,
-          "explain": "數量不對。 一つ是 1 個。"
+          "explain": "入住是 チェックイン。"
         },
         {
-          "text": "這個太貴了。",
+          "text": "早餐幾點？",
           "correct": false,
-          "explain": "這句不是點餐句。"
+          "explain": "這句不是問早餐。"
         }
       ]
     },
     {
-      "title": "計程車情境",
-      "prompt": "<span class=\"ph\">空港まで</span> お願いします。",
-      "romaji": "Kūkō made onegaishimasu.",
+      "topic": "景點",
+      "difficulty": 2,
+      "title": "拍照情境",
+      "prompt": "この写真を撮ってもいいですか。",
+      "romaji": "Kono shashin o totte mo ii desu ka.",
       "hint": "",
-      "audio": "空港までお願いします。",
+      "audio": "この写真を撮ってもいいですか。",
       "choices": [
         {
-          "text": "請到機場。",
+          "text": "我可以拍這張照片嗎？",
           "correct": true,
-          "explain": "對。 まで = 到／到達，お願いします = 麻煩你。"
+          "explain": "對。 〜てもいいですか = 可以嗎？"
         },
         {
-          "text": "請問機場在哪裡？",
+          "text": "照片在哪裡？",
           "correct": false,
-          "explain": "這句是指目的地，不是問位置。"
+          "explain": "這句不是問位置。"
         },
         {
-          "text": "我要等一下。",
+          "text": "要不要一起拍？",
           "correct": false,
           "explain": "意思不同。"
         }
@@ -78,72 +84,78 @@
   ],
   "listening": [
     {
-      "title": "餐廳情境",
+      "topic": "便利商店",
+      "difficulty": 2,
+      "title": "便利商店情境",
       "prompt": "—",
-      "romaji": "Osusume wa arimasu ka.",
+      "romaji": "Kono mise de jūdenki wa utte imasu ka.",
       "hint": "先聽題，再選最接近的意思。",
-      "audio": "おすすめはありますか。",
+      "audio": "この店で充電器は売っていますか。",
       "choices": [
         {
-          "text": "有推薦的嗎？",
+          "text": "這家店有賣充電器嗎？",
           "correct": true,
-          "explain": "對。 おすすめ = 推薦。"
+          "explain": "對。 充電器 = 充電器、売っていますか = 有賣嗎？"
         },
         {
-          "text": "可以外帶嗎？",
+          "text": "這家店有賣便當嗎？",
           "correct": false,
-          "explain": "這句是在問推薦，不是外帶。"
+          "explain": "問的不是便當。"
         },
         {
-          "text": "要加辣嗎？",
+          "text": "可以借充電器嗎？",
+          "correct": false,
+          "explain": "這句是問能不能買，不是借。"
+        }
+      ]
+    },
+    {
+      "topic": "景點",
+      "difficulty": 2,
+      "title": "景點情境",
+      "prompt": "—",
+      "romaji": "Koko kara eki made tōi desu ka.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "ここから駅まで遠いですか。",
+      "choices": [
+        {
+          "text": "從這裡到車站遠嗎？",
+          "correct": true,
+          "explain": "對。 ここから = 從這裡，〜まで = 到。"
+        },
+        {
+          "text": "車站在哪裡？",
+          "correct": false,
+          "explain": "這句是問距離，不是位置。"
+        },
+        {
+          "text": "現在可以進去嗎？",
           "correct": false,
           "explain": "意思不同。"
         }
       ]
     },
     {
-      "title": "月台情境",
+      "topic": "遊樂園",
+      "difficulty": 2,
+      "title": "遊樂園情境",
       "prompt": "—",
-      "romaji": "Kono densha wa Kyōto ni ikimasu ka.",
-      "hint": "先聽題，再選最適合的答案。",
-      "audio": "この電車は京都に行きますか。",
-      "choices": [
-        {
-          "text": "這班電車會去京都嗎？",
-          "correct": true,
-          "explain": "對。 この電車は = 這班電車，京都に行きますか = 會去京都嗎？"
-        },
-        {
-          "text": "這班電車幾點出發？",
-          "correct": false,
-          "explain": "這句是問目的地，不是時間。"
-        },
-        {
-          "text": "請問這裡可以買票嗎？",
-          "correct": false,
-          "explain": "這句是在問購票，不是方向。"
-        }
-      ]
-    },
-    {
-      "title": "公車情境",
-      "prompt": "—",
-      "romaji": "Tsugi no basu wa nanji desu ka.",
+      "romaji": "Jetto kōsutā wa nan-pun machi desu ka.",
       "hint": "先聽題，再選最接近的意思。",
-      "audio": "次のバスは何時ですか。",
+      "audio": "ジェットコースターは何分待ちですか。",
       "choices": [
         {
-          "text": "下一班公車幾點？",
+          "text": "雲霄飛車要等幾分鐘？",
           "correct": true,
-          "explain": "對。 次のバス = 下一班公車。"
+          "explain": "對。 何分待ち = 要等幾分鐘。"
         },
         {
-          "text": "公車站在哪裡？",
+          "text": "雲霄飛車在哪裡？",
           "correct": false,
-          "explain": "這句是在問時間，不是位置。"
+          "explain": "這句不是問位置。"
         },
         {
-          "text": "這班公車去哪裡？",
+          "text": "可以拍照嗎？",
           "correct": false,
           "explain": "意思不同。"
         }
