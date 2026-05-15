@@ -3,420 +3,327 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>小龍蝦 Language Lab｜日文旅遊會話練習</title>
+  <title>🦞 龍蝦養殖知識大問答</title>
   <style>
-    :root {
-      --bg: #0b1220;
-      --card: #111827;
-      --card2: #0f172a;
-      --line: #243042;
-      --text: #e5eefb;
-      --muted: #9fb0c8;
-      --accent: #38bdf8;
-      --good: #22c55e;
-      --bad: #ef4444;
-      --warn: #f59e0b;
+    :root{
+      --bg:#07111f; --panel:#0d1728; --panel2:#0b1524; --line:#23324a;
+      --text:#eaf2ff; --muted:#9fb3cf; --accent:#ff8a3d; --accent2:#38bdf8;
+      --good:#22c55e; --bad:#ef4444; --warn:#f59e0b;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;
-      background: radial-gradient(circle at top, #12203a 0%, var(--bg) 52%);
-      color: var(--text);
-    }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 40px; }
-    .hero, .panel, .card {
-      background: rgba(17,24,39,.88);
-      border: 1px solid rgba(36,48,66,.95);
-      border-radius: 20px;
-      box-shadow: 0 14px 50px rgba(0,0,0,.25);
-    }
-    .hero { padding: 26px; display: grid; gap: 10px; }
-    .eyebrow { color: #7dd3fc; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
-    h1 { margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.08; }
-    .lead { margin: 0; color: var(--muted); line-height: 1.7; max-width: 72ch; }
-    .badge { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 8px 12px; border-radius: 999px; background: rgba(56,189,248,.12); color: #a5e6ff; font-size: 13px; }
-    .layout { display: grid; gap: 16px; grid-template-columns: 1.4fr .9fr; margin-top: 16px; }
-    .panel, .card { padding: 18px; }
-    .panel h2, .card h3 { margin: 0 0 8px; font-size: 18px; }
-    .muted { color: var(--muted); font-size: 14px; line-height: 1.65; }
-    .stack { display: grid; gap: 12px; }
-    .scenario-title { font-size: 20px; margin: 0; }
-    .jp { font-size: 18px; color: #dbeafe; line-height: 1.8; }
-    .romaji { color: #9fb0c8; font-size: 14px; line-height: 1.6; }
-    .prompt-shell {
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: #0b1220;
-      display: grid;
-      gap: 10px;
-    }
-    .prompt-note { color: #9dd6ff; font-size: 13px; }
-    .ph { color: #9dd6ff; font-weight: 700; }
-    .modebar { display: flex; gap: 10px; flex-wrap: wrap; }
-    button.choice, button.nav, button.mode {
-      border: 1px solid var(--line);
-      background: var(--card2);
-      color: var(--text);
-      border-radius: 14px;
-      padding: 12px 14px;
-      text-align: left;
-      font: inherit;
-      cursor: pointer;
-      transition: transform .06s ease, border-color .12s ease, background .12s ease;
-    }
-    button.choice:hover, button.nav:hover, button.mode:hover { transform: translateY(-1px); border-color: #3b82f6; }
-    button.mode.active { border-color: rgba(56,189,248,.9); background: rgba(56,189,248,.14); }
-    button.nav.primary { background: linear-gradient(135deg, #38bdf8, #22d3ee); color: #062033; border-color: transparent; font-weight: 800; }
-    button.choice.correct { border-color: rgba(34,197,94,.9); background: rgba(34,197,94,.12); }
-    button.choice.wrong { border-color: rgba(239,68,68,.9); background: rgba(239,68,68,.12); }
-    .feedback {
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: #0b1220;
-      border: 1px solid var(--line);
-      min-height: 54px;
-      line-height: 1.6;
-    }
-    .feedback.good { border-color: rgba(34,197,94,.6); }
-    .feedback.bad { border-color: rgba(239,68,68,.6); }
-    .feedback.warn { border-color: rgba(245,158,11,.6); }
-    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-    .stats { display: grid; gap: 10px; grid-template-columns: repeat(3,1fr); }
-    .stat { padding: 14px; background: #0b1220; border: 1px solid var(--line); border-radius: 14px; }
-    .stat .k { color: var(--muted); font-size: 12px; }
-    .stat .v { font-size: 24px; font-weight: 800; margin-top: 4px; }
-    .mini { background:#0b1220; border:1px solid var(--line); border-radius: 16px; padding: 14px; }
-    .mini ul { margin: 8px 0 0 18px; color: var(--muted); }
-    .footer { color: var(--muted); font-size: 13px; margin-top: 14px; }
-    @media (max-width: 860px) {
-      .layout { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr; }
-    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;background:radial-gradient(circle at top,#10233f 0%,var(--bg) 56%);color:var(--text)}
+    .wrap{max-width:1180px;margin:0 auto;padding:24px 18px 40px}
+    .hero,.card,.panel{background:rgba(13,23,40,.92);border:1px solid rgba(35,50,74,.95);border-radius:20px;box-shadow:0 14px 50px rgba(0,0,0,.28)}
+    .hero{padding:26px;display:grid;gap:10px;margin-bottom:16px}
+    .badge{display:inline-flex;align-items:center;gap:8px;width:fit-content;padding:8px 12px;border-radius:999px;background:rgba(255,138,61,.12);color:#ffd3bb;font-size:13px}
+    h1{margin:0;font-size:clamp(30px,4vw,48px);line-height:1.05}
+    .lead{margin:0;max-width:80ch;color:var(--muted);line-height:1.75}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .panel,.card{padding:18px}
+    .stack{display:grid;gap:12px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .stat{padding:14px;background:var(--panel2);border:1px solid var(--line);border-radius:16px}
+    .stat .k{font-size:12px;color:var(--muted)}
+    .stat .v{font-size:26px;font-weight:800;margin-top:4px}
+    .section-title{margin:0 0 8px;font-size:18px}
+    .muted{color:var(--muted);font-size:14px;line-height:1.7}
+    .modebar,.actions,.chips{display:flex;gap:10px;flex-wrap:wrap}
+    button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:14px;padding:12px 14px;font:inherit;cursor:pointer;transition:transform .06s ease,border-color .12s ease,background .12s ease}
+    button:hover{transform:translateY(-1px);border-color:#3b82f6}
+    button.active{border-color:rgba(56,189,248,.95);background:rgba(56,189,248,.14)}
+    button.primary{background:linear-gradient(135deg,#ff8a3d,#fb7185);color:#fff;border-color:transparent;font-weight:800}
+    button.good{border-color:rgba(34,197,94,.85);background:rgba(34,197,94,.12)}
+    button.bad{border-color:rgba(239,68,68,.85);background:rgba(239,68,68,.12)}
+    .question{padding:16px;border:1px solid var(--line);border-radius:18px;background:#07111f;display:grid;gap:10px}
+    .topic{font-size:12px;color:#fdb38c;letter-spacing:.08em;text-transform:uppercase}
+    .q{font-size:22px;line-height:1.4;margin:0}
+    .hint{font-size:14px;color:#a7bdd6;background:rgba(255,255,255,.04);border-left:4px solid rgba(255,138,61,.9);padding:10px 12px;border-radius:10px}
+    .choices{display:grid;gap:10px}
+    .choice{text-align:left}
+    .feedback{padding:14px;border-radius:16px;border:1px solid var(--line);background:#07111f;min-height:58px;line-height:1.6}
+    .feedback.good{border-color:rgba(34,197,94,.6)}
+    .feedback.bad{border-color:rgba(239,68,68,.6)}
+    .feedback.warn{border-color:rgba(245,158,11,.6)}
+    .mini{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:14px}
+    .facts{display:grid;gap:10px}
+    .fact{padding:14px;border:1px solid var(--line);border-radius:16px;background:#07111f}
+    .fact strong{display:block;margin-bottom:4px;color:#ffd3bb}
+    .footer{margin-top:14px;color:var(--muted);font-size:13px}
+    .progressbar{height:10px;background:#0a1422;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+    .progressbar > div{height:100%;width:0;background:linear-gradient(90deg,#38bdf8,#ff8a3d)}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:520px){.stats{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <section class="hero">
-      <div class="badge">🦞 小龍蝦 Language Lab · 日文旅遊會話練習</div>
-      <div class="eyebrow">Japanese Travel Conversation</div>
-      <h1>日文旅遊會話練習</h1>
-      <p class="lead">以情境式題目練習旅遊常用日文；作答後再參考中文解釋。</p>
+      <div class="badge">🦞 龍蝦養殖知識大問答 · 互動挑戰版</div>
+      <h1>龍蝦養殖知識大問答</h1>
+      <p class="lead">今天不是看文章，是直接上場答題。從水質、飼料、脫殼、疾病到採收，做一輪就知道你是不是懂養龍蝦。</p>
     </section>
 
-    <div class="layout">
-      <section class="panel">
-        <div class="stack">
-          <div>
-            <div class="muted">情境</div>
-            <h2 class="scenario-title" id="scenarioTitle">—</h2>
-          </div>
-
-          <div class="modebar">
-            <button class="mode active" id="readingModeBtn">閱讀題</button>
-            <button class="mode" id="listeningModeBtn">聽力題</button>
-            <button class="mode" id="speakBtn">▶ 播放音訊</button>
-          </div>
-
-          <div class="prompt-shell">
-            <div class="prompt-note" id="scenarioMode">—</div>
-            <div class="jp" id="scenarioPrompt">—</div>
-            <div class="romaji" id="scenarioRomaji">—</div>
-            <div class="muted" id="scenarioHint">—</div>
-          </div>
-
-          <div class="choice-grid" id="choices"></div>
-          <div class="feedback warn" id="feedback">請先選擇答案。</div>
-
-          <div class="actions">
-            <button class="nav secondary" id="prevBtn">← 上一題</button>
-            <button class="nav primary" id="nextBtn">下一題 →</button>
-          </div>
+    <div class="grid">
+      <main class="panel stack">
+        <div class="stats">
+          <div class="stat"><div class="k">分數</div><div class="v" id="score">0</div></div>
+          <div class="stat"><div class="k">答對</div><div class="v" id="correct">0</div></div>
+          <div class="stat"><div class="k">進度</div><div class="v" id="progressText">1 / 8</div></div>
+          <div class="stat"><div class="k">連勝</div><div class="v" id="streak">0</div></div>
         </div>
-      </section>
+
+        <div class="progressbar"><div id="progressBar"></div></div>
+
+        <div class="modebar">
+          <button class="active" data-mode="quiz">大問答</button>
+          <button data-mode="speed">快問快答</button>
+          <button data-mode="facts">養殖小抄</button>
+          <button id="restartBtn" class="primary">重新開始</button>
+        </div>
+
+        <section class="question" id="quizBox">
+          <div class="topic" id="topic">—</div>
+          <h2 class="q" id="question">—</h2>
+          <div class="hint" id="hint">—</div>
+          <div class="choices" id="choices"></div>
+          <div class="feedback warn" id="feedback">請先選一個答案。</div>
+          <div class="actions">
+            <button id="prevBtn">← 上一題</button>
+            <button id="nextBtn" class="primary">下一題 →</button>
+          </div>
+        </section>
+
+        <section class="question" id="speedBox" style="display:none">
+          <div class="topic">快問快答</div>
+          <h2 class="q" id="speedQuestion">—</h2>
+          <div class="hint" id="speedHint">—</div>
+          <div class="choices" id="speedChoices"></div>
+          <div class="feedback warn" id="speedFeedback">三秒內想答案，然後按下去。</div>
+        </section>
+
+        <section class="question" id="factsBox" style="display:none">
+          <div class="topic">龍蝦養殖小抄</div>
+          <h2 class="q">先記這 5 件事，答題就不容易翻車</h2>
+          <div class="facts">
+            <div class="fact"><strong>水質第一</strong>溶氧、溫度、氨氮都要穩，環境不穩，龍蝦就不穩。</div>
+            <div class="fact"><strong>脫殼期要小心</strong>脫殼前後最脆弱，躲藏空間與壓力控制很重要。</div>
+            <div class="fact"><strong>密度別太高</strong> 太擠容易打架、受傷、互相啃食。</div>
+            <div class="fact"><strong>飼料別亂來</strong> 少量多次、依體型調整，比一次猛餵更穩。</div>
+            <div class="fact"><strong>疾病早發現</strong> 行為異常、吃料變差、活動力低，都要先看環境。</div>
+          </div>
+        </section>
+      </main>
 
       <aside class="stack">
         <section class="card">
-          <h3>學習目標</h3>
-          <div class="muted">練習問路、點餐、入住與乘車等常用表達。</div>
+          <h3 class="section-title">今天你要征服的題目</h3>
+          <div class="muted">每題都是真正養殖會碰到的判斷：水質、脫殼、密度、餵食、疾病、採收。</div>
         </section>
 
         <section class="card">
-          <h3>目前進度</h3>
-          <div class="stats">
-            <div class="stat"><div class="k">正確</div><div class="v" id="correctCount">0</div></div>
-            <div class="stat"><div class="k">已作答</div><div class="v" id="answeredCount">0</div></div>
-            <div class="stat"><div class="k">題數</div><div class="v" id="totalCount">3</div></div>
-          </div>
+          <h3 class="section-title">你現在的等級</h3>
+          <div class="muted" id="rank">新手入場</div>
         </section>
 
-        <section class="card mini">
-          <h3>練習內容</h3>
-          <ul>
-            <li>情境式日文句子</li>
-            <li>作答後顯示中文解釋</li>
-            <li>聽力題可播放日文音檔</li>
-          </ul>
+        <section class="card">
+          <h3 class="section-title">今日重點</h3>
+          <div class="chips">
+            <button id="showTipsBtn">看養殖提醒</button>
+            <button id="showQuizBtn" class="primary">回到大問答</button>
+          </div>
+          <div class="footer">完成後可以直接跟大家比誰答對最多。</div>
         </section>
       </aside>
     </div>
-
-    <p class="footer">後續可加入單字卡、更多題型與自動進階流程。</p>
   </div>
 
   <script>
-    let lessonSets = {
-      reading: [
-        {
-          title: '車站情境',
-          prompt: 'すみません、<span class="ph">東京駅</span>はどこですか。',
-          romaji: 'Sumimasen, Tōkyō-eki wa doko desu ka.',
-          hint: '',
-          audio: 'すみません、東京駅はどこですか。',
-          choices: [
-            { text: '請問，東京車站在哪裡？', correct: true, explain: '對。 すみません = 不好意思 / 請問，どこですか = 在哪裡？' },
-            { text: '不好意思，我要買票。', correct: false, explain: '這句意思不對。 這題是在問位置，不是買票。' },
-            { text: '請問，幾點發車？', correct: false, explain: '這題是「在哪裡」，不是問時間。' },
-          ],
-        },
-        {
-          title: '餐廳情境',
-          prompt: 'これを <span class="ph">一つ</span> ください。',
-          romaji: 'Kore o hitotsu kudasai.',
-          hint: '',
-          audio: 'これを一つください。',
-          choices: [
-            { text: '請給我一個這個。', correct: true, explain: '對。 これ = 這個，ひとつ / 一つ = 一個，ください = 請給我。' },
-            { text: '請給我兩個這個。', correct: false, explain: '數量不對。 一つ是 1 個。' },
-            { text: '這個太貴了。', correct: false, explain: '這句不是點餐句。' },
-          ],
-        },
-        {
-          title: '飯店情境',
-          prompt: 'チェックインを <span class="ph">お願いします</span>。',
-          romaji: 'Chekkuin o onegaishimasu.',
-          hint: '',
-          audio: 'チェックインをお願いします。',
-          choices: [
-            { text: '我要辦理入住。', correct: true, explain: '對。 チェックイン = check-in，お願いします = 麻煩你 / 拜託。' },
-            { text: '我要退房。', correct: false, explain: '退房是 チェックアウト。' },
-            { text: '請給我一張地圖。', correct: false, explain: '不是這個意思。' },
-          ],
-        },
-      ],
-      listening: [
-        {
-          title: '月台情境',
-          prompt: '—',
-          romaji: 'Kono densha wa Kyōto ni ikimasu ka.',
-          hint: '先聽題，再選最適合的答案。',
-          audio: 'この電車は京都に行きますか。',
-          choices: [
-            { text: '這班電車會去京都嗎？', correct: true, explain: '對。 この電車は = 這班電車，京都に行きますか = 會去京都嗎？' },
-            { text: '這班電車幾點出發？', correct: false, explain: '這句是問目的地，不是時間。' },
-            { text: '請問這裡可以買票嗎？', correct: false, explain: '這句是在問購票，不是方向。' },
-          ],
-        },
-        {
-          title: '餐廳情境',
-          prompt: '—',
-          romaji: 'Osusume wa arimasu ka.',
-          hint: '先聽題，再選最接近的意思。',
-          audio: 'おすすめはありますか。',
-          choices: [
-            { text: '有推薦的嗎？', correct: true, explain: '對。 おすすめ = 推薦。' },
-            { text: '可以外帶嗎？', correct: false, explain: '這句是在問推薦，不是外帶。' },
-            { text: '要加辣嗎？', correct: false, explain: '意思不同。' },
-          ],
-        },
-        {
-          title: '飯店情境',
-          prompt: '—',
-          romaji: 'Asa-gohan wa nanji desu ka.',
-          hint: '請先播放音訊，再作答。',
-          audio: '朝ごはんは何時ですか。',
-          choices: [
-            { text: '早餐幾點？', correct: true, explain: '對。 朝ごはん = 早餐，何時ですか = 幾點？' },
-            { text: '早餐有幾種？', correct: false, explain: '這句是問時間，不是種類。' },
-            { text: '退房時間是幾點？', correct: false, explain: '這句是在問退房，不是早餐。' },
-          ],
-        },
-      ],
-    };
+    const modeButtons = [...document.querySelectorAll('[data-mode]')];
+    const quizBox = document.getElementById('quizBox');
+    const speedBox = document.getElementById('speedBox');
+    const factsBox = document.getElementById('factsBox');
+    const topicEl = document.getElementById('topic');
+    const questionEl = document.getElementById('question');
+    const hintEl = document.getElementById('hint');
+    const choicesEl = document.getElementById('choices');
+    const feedbackEl = document.getElementById('feedback');
+    const scoreEl = document.getElementById('score');
+    const correctEl = document.getElementById('correct');
+    const progressTextEl = document.getElementById('progressText');
+    const streakEl = document.getElementById('streak');
+    const progressBarEl = document.getElementById('progressBar');
+    const rankEl = document.getElementById('rank');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const restartBtn = document.getElementById('restartBtn');
+    const showTipsBtn = document.getElementById('showTipsBtn');
+    const showQuizBtn = document.getElementById('showQuizBtn');
+    const speedQuestionEl = document.getElementById('speedQuestion');
+    const speedHintEl = document.getElementById('speedHint');
+    const speedChoicesEl = document.getElementById('speedChoices');
+    const speedFeedbackEl = document.getElementById('speedFeedback');
 
-    let mode = 'reading';
+    const bank = [
+      { topic:'水質管理', q:'龍蝦養殖最先要盯緊的三個環境指標是哪一組？', hint:'想想「活不活得下去」最直接的因素。', choices:[
+        { text:'溫度、溶氧、氨氮', correct:true, why:'對，這三個最常先出事。' },
+        { text:'顏色、大小、口味', correct:false, why:'這些不是環境核心指標。' },
+        { text:'光照、聲音、空氣清新度', correct:false, why:'不是養殖池的首要指標。' },
+      ]},
+      { topic:'脫殼期', q:'龍蝦脫殼前後，最需要先做的是什麼？', hint:'這時候牠最脆弱。', choices:[
+        { text:'提供躲藏空間、減少壓力', correct:true, why:'對，脫殼期要避免受驚和爭鬥。' },
+        { text:'大量加餌讓牠快長大', correct:false, why:'太刺激反而容易出問題。' },
+        { text:'把水溫大幅拉高', correct:false, why:'變動太大很危險。' },
+      ]},
+      { topic:'密度控制', q:'養殖密度太高最容易造成什麼？', hint:'不是「更多更好」。', choices:[
+        { text:'打架、受傷、互相啃食', correct:true, why:'對，空間太擠會出事。' },
+        { text:'龍蝦突然更安靜', correct:false, why:'實際上通常更緊迫。' },
+        { text:'水質自動變好', correct:false, why:'相反，通常更難維持。' },
+      ]},
+      { topic:'餵食策略', q:'比較穩的餵食方式是？', hint:'重點是穩定，不是一次灌爆。', choices:[
+        { text:'少量多次、依體型調整', correct:true, why:'對，這樣比較好控制殘餌與成長。' },
+        { text:'一天只餵一次，盡量餵很多', correct:false, why:'這樣殘餌風險高。' },
+        { text:'完全不固定，看心情', correct:false, why:'不利於管理。' },
+      ]},
+      { topic:'健康觀察', q:'發現龍蝦吃料變差、活動力降低，第一步應該先看什麼？', hint:'先從系統面找原因。', choices:[
+        { text:'水質與環境條件', correct:true, why:'對，先檢查環境最合理。' },
+        { text:'先換另一批龍蝦', correct:false, why:'太快下結論。' },
+        { text:'直接停止所有管理', correct:false, why:'這更危險。' },
+      ]},
+      { topic:'採收判斷', q:'採收前最合理的想法是？', hint:'要看規格與市場，不是只看長得大不大。', choices:[
+        { text:'依規格、存活率與市場需求決定', correct:true, why:'對，這是比較務實的判斷。' },
+        { text:'只要看有沒有最大隻', correct:false, why:'太單一。' },
+        { text:'看到就全抓，不管狀況', correct:false, why:'風險很高。' },
+      ]},
+      { topic:'躲藏物', q:'養殖池放躲藏物（如管材、網片）主要是為了什麼？', hint:'讓牠有地方「避」。', choices:[
+        { text:'降低互相爭鬥與受傷', correct:true, why:'對，能減少衝突。' },
+        { text:'讓水變甜', correct:false, why:'沒有這種效果。' },
+        { text:'把光線變更亮', correct:false, why:'不是主要目的。' },
+      ]},
+      { topic:'水溫變動', q:'如果水溫突然大幅變動，最可能發生什麼？', hint:'生物最怕「忽冷忽熱」。', choices:[
+        { text:'壓力增加、活動與食慾受影響', correct:true, why:'對，波動太大會讓龍蝦不舒服。' },
+        { text:'一定立刻長更快', correct:false, why:'不一定，通常是風險。' },
+        { text:'完全沒差', correct:false, why:'差很多。' },
+      ]},
+    ];
+
+    const speedSet = [...bank].sort(() => Math.random() - 0.5).slice(0, 5);
+    let mode = 'quiz';
     let index = 0;
+    let score = 0;
     let correct = 0;
+    let streak = 0;
     let answered = 0;
     let locked = false;
-    let voices = [];
 
-    const els = {
-      title: document.getElementById('scenarioTitle'),
-      mode: document.getElementById('scenarioMode'),
-      prompt: document.getElementById('scenarioPrompt'),
-      romaji: document.getElementById('scenarioRomaji'),
-      hint: document.getElementById('scenarioHint'),
-      choices: document.getElementById('choices'),
-      feedback: document.getElementById('feedback'),
-      prevBtn: document.getElementById('prevBtn'),
-      nextBtn: document.getElementById('nextBtn'),
-      correctCount: document.getElementById('correctCount'),
-      answeredCount: document.getElementById('answeredCount'),
-      totalCount: document.getElementById('totalCount'),
-      readingModeBtn: document.getElementById('readingModeBtn'),
-      listeningModeBtn: document.getElementById('listeningModeBtn'),
-      speakBtn: document.getElementById('speakBtn'),
-    };
-
-    const stripHtml = (s) => s.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
-    const currentLessons = () => lessonSets[mode];
-    const shuffled = (items) => [...items].sort(() => Math.random() - 0.5);
-
-    function updateVoiceList() {
-      if (!('speechSynthesis' in window)) return;
-      voices = window.speechSynthesis.getVoices();
+    function shuffled(items){ return [...items].sort(() => Math.random() - 0.5); }
+    function renderRank(){
+      if (score >= 800) return '龍蝦場老司機';
+      if (score >= 500) return '穩定養殖手';
+      if (score >= 250) return '入門養殖員';
+      return '新手入場';
     }
-
-    function speak(text) {
-      if (!('speechSynthesis' in window)) {
-        els.feedback.className = 'feedback bad';
-        els.feedback.textContent = '目前瀏覽器不支援語音播放功能。';
-        return;
-      }
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ja-JP';
-      utterance.rate = 0.95;
-      utterance.pitch = 1;
-      const jaVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ja'));
-      if (jaVoice) utterance.voice = jaVoice;
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utterance);
+    function updateStats(){
+      scoreEl.textContent = score;
+      correctEl.textContent = correct;
+      progressTextEl.textContent = `${Math.min(index + 1, bank.length)} / ${bank.length}`;
+      streakEl.textContent = streak;
+      progressBarEl.style.width = `${(answered / bank.length) * 100}%`;
+      rankEl.textContent = renderRank();
     }
-
-    function setMode(nextMode) {
-      if (mode === nextMode) return;
-      mode = nextMode;
-      index = 0;
-      correct = 0;
-      answered = 0;
+    function setMode(next){
+      mode = next;
+      modeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.mode === next));
+      quizBox.style.display = next === 'quiz' ? '' : 'none';
+      speedBox.style.display = next === 'speed' ? '' : 'none';
+      factsBox.style.display = next === 'facts' ? '' : 'none';
+      if (next === 'speed') renderSpeed();
+      if (next === 'quiz') renderQuiz();
+    }
+    function renderQuiz(){
+      const q = bank[index];
       locked = false;
-      els.readingModeBtn.classList.toggle('active', mode === 'reading');
-      els.listeningModeBtn.classList.toggle('active', mode === 'listening');
-      render();
-    }
-
-    async function loadDailyLessons() {
-      try {
-        const res = await fetch('./daily-lessons.json', { cache: 'no-store' });
-        if (!res.ok) return;
-        const data = await res.json();
-        if (data && Array.isArray(data.reading) && Array.isArray(data.listening) && data.reading.length && data.listening.length) {
-          lessonSets = {
-            reading: data.reading,
-            listening: data.listening,
-          };
-        }
-      } catch {
-        // fallback to embedded lessons
-      }
-    }
-
-    function render() {
-      const lesson = currentLessons()[index];
-      locked = false;
-      els.title.textContent = lesson.title;
-      els.mode.textContent = mode === 'reading' ? '閱讀題' : '聽力題';
-      els.prompt.innerHTML = mode === 'reading' ? lesson.prompt : '請播放音訊後作答。';
-      els.romaji.textContent = lesson.romaji || '—';
-      els.romaji.style.display = mode === 'reading' ? 'block' : 'none';
-      els.hint.textContent = lesson.hint || '';
-      els.hint.style.display = lesson.hint ? 'block' : 'none';
-      els.totalCount.textContent = currentLessons().length;
-      els.feedback.className = 'feedback warn';
-      els.feedback.textContent = '請先選擇答案。';
-      els.choices.innerHTML = '';
-
-      shuffled(lesson.choices).forEach((choice) => {
+      topicEl.textContent = `題目 ${index + 1}`;
+      questionEl.textContent = q.q;
+      hintEl.textContent = q.hint;
+      choicesEl.innerHTML = '';
+      feedbackEl.className = 'feedback warn';
+      feedbackEl.textContent = '請先選一個答案。';
+      for (const choice of shuffled(q.choices)) {
         const btn = document.createElement('button');
         btn.className = 'choice';
-        btn.dataset.correct = choice.correct ? '1' : '0';
         btn.textContent = choice.text;
         btn.addEventListener('click', () => pick(choice, btn));
-        els.choices.appendChild(btn);
-      });
-
-      els.prevBtn.style.display = 'none';
-      els.prevBtn.disabled = true;
-      els.nextBtn.textContent = index === currentLessons().length - 1 ? '完成 ✓' : '下一題 →';
-      els.speakBtn.style.display = mode === 'listening' ? 'inline-flex' : 'none';
+        choicesEl.appendChild(btn);
+      }
+      prevBtn.disabled = index === 0;
+      nextBtn.textContent = index === bank.length - 1 ? '完成 ✓' : '下一題 →';
       updateStats();
-
-      if (mode === 'listening') {
-        window.setTimeout(() => speak(lesson.audio || stripHtml(lesson.prompt)), 180);
+    }
+    function renderSpeed(){
+      const q = speedSet[index % speedSet.length];
+      locked = false;
+      speedQuestionEl.textContent = q.q;
+      speedHintEl.textContent = '三秒內想好，越快越像真的有在養。';
+      speedChoicesEl.innerHTML = '';
+      speedFeedbackEl.className = 'feedback warn';
+      speedFeedbackEl.textContent = '快答模式：直接選。';
+      for (const choice of shuffled(q.choices)) {
+        const btn = document.createElement('button');
+        btn.className = 'choice';
+        btn.textContent = choice.text;
+        btn.addEventListener('click', () => pickSpeed(choice, btn, q));
+        speedChoicesEl.appendChild(btn);
       }
     }
-
-    function pick(choice, btn) {
+    function pick(choice, btn){
       if (locked) return;
-      locked = true;
-      answered += 1;
-      const allBtns = [...document.querySelectorAll('.choice')];
-
+      locked = true; answered += 1;
+      const buttons = [...choicesEl.querySelectorAll('button')];
       if (choice.correct) {
-        correct += 1;
-        btn.classList.add('correct');
-        els.feedback.className = 'feedback good';
-        els.feedback.innerHTML = `✅ 正確！<br>${choice.explain}`;
+        score += 120; correct += 1; streak += 1;
+        btn.classList.add('good');
+        feedbackEl.className = 'feedback good';
+        feedbackEl.innerHTML = `✅ 正確！<br>${choice.why}`;
       } else {
-        btn.classList.add('wrong');
-        els.feedback.className = 'feedback bad';
-        const correctChoice = currentLessons()[index].choices.find(c => c.correct);
-        els.feedback.innerHTML = `❌ 正確答案是『${correctChoice?.text || ''}』。<br>${choice.explain}`;
-        allBtns.find(b => b.dataset.correct === '1')?.classList.add('correct');
+        score = Math.max(0, score - 30); streak = 0;
+        btn.classList.add('bad');
+        feedbackEl.className = 'feedback bad';
+        const good = bank[index].choices.find(c => c.correct);
+        feedbackEl.innerHTML = `❌ 正解：${good?.text || ''}<br>${choice.why}`;
+        buttons.find(b => b.textContent === good?.text)?.classList.add('good');
       }
-
-      allBtns.forEach(b => b.disabled = true);
+      buttons.forEach(b => b.disabled = true);
+      updateStats();
+    }
+    function pickSpeed(choice, btn, q){
+      if (locked) return;
+      locked = true; answered += 1;
+      const buttons = [...speedChoicesEl.querySelectorAll('button')];
+      if (choice.correct) {
+        score += 80; correct += 1; streak += 1;
+        btn.classList.add('good');
+        speedFeedbackEl.className = 'feedback good';
+        speedFeedbackEl.innerHTML = `✅ ${choice.why}`;
+      } else {
+        score = Math.max(0, score - 20); streak = 0;
+        btn.classList.add('bad');
+        speedFeedbackEl.className = 'feedback bad';
+        const good = q.choices.find(c => c.correct);
+        speedFeedbackEl.innerHTML = `❌ 正解：${good?.text || ''}<br>${choice.why}`;
+        buttons.find(b => b.textContent === good?.text)?.classList.add('good');
+      }
+      buttons.forEach(b => b.disabled = true);
       updateStats();
     }
 
-    function updateStats() {
-      els.correctCount.textContent = correct;
-      els.answeredCount.textContent = answered;
-    }
+    modeButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.mode)));
+    prevBtn.addEventListener('click', () => { if (index > 0) { index -= 1; renderQuiz(); } });
+    nextBtn.addEventListener('click', () => { if (index < bank.length - 1) { index += 1; renderQuiz(); } else { feedbackEl.className = 'feedback good'; feedbackEl.textContent = '全數完成，今天你就是龍蝦養殖大師。'; } });
+    restartBtn.addEventListener('click', () => { index = 0; score = 0; correct = 0; streak = 0; answered = 0; renderQuiz(); setMode('quiz'); });
+    showTipsBtn.addEventListener('click', () => setMode('facts'));
+    showQuizBtn.addEventListener('click', () => setMode('quiz'));
 
-    els.prevBtn.addEventListener('click', () => {
-      if (index > 0) {
-        index -= 1;
-        render();
-      }
-    });
-
-    els.nextBtn.addEventListener('click', () => {
-      if (index < currentLessons().length - 1) {
-        index += 1;
-        render();
-      } else {
-        els.feedback.className = 'feedback good';
-        els.feedback.textContent = `完成了！你答對 ${correct}/${answered} 題。可以切換模式再練一次。`;
-      }
-    });
-
-    els.readingModeBtn.addEventListener('click', () => setMode('reading'));
-    els.listeningModeBtn.addEventListener('click', () => setMode('listening'));
-    els.speakBtn.addEventListener('click', () => {
-      const lesson = currentLessons()[index];
-      speak(lesson.audio || stripHtml(lesson.prompt));
-    });
-
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.onvoiceschanged = updateVoiceList;
-      updateVoiceList();
-    }
-
-    loadDailyLessons().finally(() => render());
+    renderQuiz();
   </script>
 </body>
 </html>
