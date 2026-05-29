@@ -22,8 +22,8 @@
       "mode": "reading",
       "difficulty": 1,
       "status": "used",
-      "appearedCount": 4,
-      "lastSeen": "2026-05-15",
+      "appearedCount": 5,
+      "lastSeen": "2026-05-29",
       "prompt": "すみません、東京駅はどこですか。"
     },
     {
@@ -112,8 +112,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 2,
-      "lastSeen": "2026-05-15",
+      "appearedCount": 3,
+      "lastSeen": "2026-05-29",
       "prompt": "—"
     },
     {
@@ -152,8 +152,8 @@
       "mode": "reading",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 1,
-      "lastSeen": "2026-05-15",
+      "appearedCount": 2,
+      "lastSeen": "2026-05-29",
       "prompt": "チェックアウトは何時ですか。"
     },
     {
@@ -192,8 +192,28 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
+      "appearedCount": 2,
+      "lastSeen": "2026-05-29",
+      "prompt": "—"
+    },
+    {
+      "id": "read-005",
+      "topic": "便利商店",
+      "mode": "reading",
+      "difficulty": 2,
+      "status": "used",
       "appearedCount": 1,
-      "lastSeen": "2026-05-15",
+      "lastSeen": "2026-05-29",
+      "prompt": "<span class=\"ph\">袋</span> はいりません。"
+    },
+    {
+      "id": "listen-005",
+      "topic": "便利商店",
+      "mode": "listening",
+      "difficulty": 2,
+      "status": "used",
+      "appearedCount": 1,
+      "lastSeen": "2026-05-29",
       "prompt": "—"
     }
   ]
