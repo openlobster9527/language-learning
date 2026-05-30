@@ -1,11 +1,9 @@
 {
-  "date": "2026-05-29",
+  "date": "2026-05-30",
   "timezone": "Asia/Taipei",
   "source": "lesson-catalog.json",
   "reading": [
     {
-      "topic": "車站",
-      "difficulty": 1,
       "title": "車站情境",
       "prompt": "すみません、<span class=\"ph\">東京駅</span>はどこですか。",
       "romaji": "Sumimasen, Tōkyō-eki wa doko desu ka.",
@@ -30,8 +28,30 @@
       ]
     },
     {
-      "topic": "旅館",
-      "difficulty": 2,
+      "title": "餐廳情境",
+      "prompt": "これを <span class=\"ph\">一つ</span> ください。",
+      "romaji": "Kore o hitotsu kudasai.",
+      "hint": "",
+      "audio": "これを一つください。",
+      "choices": [
+        {
+          "text": "請給我一個這個。",
+          "correct": true,
+          "explain": "對。 これ = 這個，ひとつ / 一つ = 一個，ください = 請給我。"
+        },
+        {
+          "text": "請給我兩個這個。",
+          "correct": false,
+          "explain": "數量不對。 一つ是 1 個。"
+        },
+        {
+          "text": "這個太貴了。",
+          "correct": false,
+          "explain": "這句不是點餐句。"
+        }
+      ]
+    },
+    {
       "title": "退房情境",
       "prompt": "チェックアウトは何時ですか。",
       "romaji": "Chekkuauto wa nanji desu ka.",
@@ -54,108 +74,76 @@
           "explain": "這句不是問早餐。"
         }
       ]
-    },
-    {
-      "topic": "便利商店",
-      "difficulty": 2,
-      "title": "便利商店情境",
-      "prompt": "<span class=\"ph\">袋</span> はいりません。",
-      "romaji": "Fukuro wa irimasen.",
-      "hint": "",
-      "audio": "袋はいりません。",
-      "choices": [
-        {
-          "text": "我不需要袋子。",
-          "correct": true,
-          "explain": "對。 いりません = 不需要。"
-        },
-        {
-          "text": "我要兩個袋子。",
-          "correct": false,
-          "explain": "意思相反。"
-        },
-        {
-          "text": "請結帳。",
-          "correct": false,
-          "explain": "不是這個意思。"
-        }
-      ]
     }
   ],
   "listening": [
     {
-      "topic": "公車",
-      "difficulty": 2,
-      "title": "公車情境",
+      "title": "月台情境",
       "prompt": "—",
-      "romaji": "Tsugi no basu wa nanji desu ka.",
-      "hint": "先聽題，再選最接近的意思。",
-      "audio": "次のバスは何時ですか。",
+      "romaji": "Kono densha wa Kyōto ni ikimasu ka.",
+      "hint": "先聽題，再選最適合的答案。",
+      "audio": "この電車は京都に行きますか。",
       "choices": [
         {
-          "text": "下一班公車幾點？",
+          "text": "這班電車會去京都嗎？",
           "correct": true,
-          "explain": "對。 次のバス = 下一班公車。"
+          "explain": "對。 この電車は = 這班電車，京都に行きますか = 會去京都嗎？"
         },
         {
-          "text": "公車站在哪裡？",
+          "text": "這班電車幾點出發？",
           "correct": false,
-          "explain": "這句是在問時間，不是位置。"
+          "explain": "這句是問目的地，不是時間。"
         },
         {
-          "text": "這班公車去哪裡？",
+          "text": "請問這裡可以買票嗎？",
+          "correct": false,
+          "explain": "這句是在問購票，不是方向。"
+        }
+      ]
+    },
+    {
+      "title": "計程車情境",
+      "prompt": "—",
+      "romaji": "Kūkō made onegaishimasu.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "空港までお願いします。",
+      "choices": [
+        {
+          "text": "請到機場。",
+          "correct": true,
+          "explain": "對。 まで = 到／到達。"
+        },
+        {
+          "text": "請問機場在哪裡？",
+          "correct": false,
+          "explain": "這句不是目的地。"
+        },
+        {
+          "text": "我想要下車。",
           "correct": false,
           "explain": "意思不同。"
         }
       ]
     },
     {
-      "topic": "遊樂園",
-      "difficulty": 2,
-      "title": "遊樂園情境",
+      "title": "餐廳情境",
       "prompt": "—",
-      "romaji": "Jetto kōsutā wa nan-pun machi desu ka.",
+      "romaji": "Osusume wa arimasu ka.",
       "hint": "先聽題，再選最接近的意思。",
-      "audio": "ジェットコースターは何分待ちですか。",
+      "audio": "おすすめはありますか。",
       "choices": [
         {
-          "text": "雲霄飛車要等幾分鐘？",
+          "text": "有推薦的嗎？",
           "correct": true,
-          "explain": "對。 何分待ち = 要等幾分鐘。"
+          "explain": "對。 おすすめ = 推薦。"
         },
         {
-          "text": "雲霄飛車在哪裡？",
+          "text": "可以外帶嗎？",
           "correct": false,
-          "explain": "這句不是問位置。"
+          "explain": "這句是在問推薦，不是外帶。"
         },
         {
-          "text": "可以拍照嗎？",
-          "correct": false,
-          "explain": "意思不同。"
-        }
-      ]
-    },
-    {
-      "topic": "便利商店",
-      "difficulty": 2,
-      "title": "便利商店情境",
-      "prompt": "—",
-      "romaji": "ATM wa arimasu ka.",
-      "hint": "先聽題，再選最接近的意思。",
-      "audio": "ATMはありますか。",
-      "choices": [
-        {
-          "text": "有 ATM 嗎？",
-          "correct": true,
-          "explain": "對。 ありますか = 有嗎？"
-        },
-        {
-          "text": "可以刷卡嗎？",
-          "correct": false,
-          "explain": "這句是在問 ATM，不是刷卡。"
-        },
-        {
-          "text": "可以買水嗎？",
+          "text": "要加辣嗎？",
           "correct": false,
           "explain": "意思不同。"
         }
