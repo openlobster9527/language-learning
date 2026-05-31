@@ -1,9 +1,11 @@
 {
-  "date": "2026-05-30",
+  "date": "2026-05-31",
   "timezone": "Asia/Taipei",
   "source": "lesson-catalog.json",
   "reading": [
     {
+      "topic": "車站",
+      "difficulty": 1,
       "title": "車站情境",
       "prompt": "すみません、<span class=\"ph\">東京駅</span>はどこですか。",
       "romaji": "Sumimasen, Tōkyō-eki wa doko desu ka.",
@@ -28,6 +30,8 @@
       ]
     },
     {
+      "topic": "餐廳",
+      "difficulty": 1,
       "title": "餐廳情境",
       "prompt": "これを <span class=\"ph\">一つ</span> ください。",
       "romaji": "Kore o hitotsu kudasai.",
@@ -52,32 +56,88 @@
       ]
     },
     {
-      "title": "退房情境",
-      "prompt": "チェックアウトは何時ですか。",
-      "romaji": "Chekkuauto wa nanji desu ka.",
+      "topic": "便利商店",
+      "difficulty": 2,
+      "title": "便利商店情境",
+      "prompt": "<span class=\"ph\">袋</span> はいりません。",
+      "romaji": "Fukuro wa irimasen.",
       "hint": "",
-      "audio": "チェックアウトは何時ですか。",
+      "audio": "袋はいりません。",
       "choices": [
         {
-          "text": "退房時間是幾點？",
+          "text": "我不需要袋子。",
           "correct": true,
-          "explain": "對。 チェックアウト = 退房、何時ですか = 幾點？"
+          "explain": "對。 いりません = 不需要。"
         },
         {
-          "text": "入住時間是幾點？",
+          "text": "我要兩個袋子。",
           "correct": false,
-          "explain": "入住是 チェックイン。"
+          "explain": "意思相反。"
         },
         {
-          "text": "早餐幾點？",
+          "text": "請結帳。",
           "correct": false,
-          "explain": "這句不是問早餐。"
+          "explain": "不是這個意思。"
         }
       ]
     }
   ],
   "listening": [
     {
+      "topic": "便利商店",
+      "difficulty": 2,
+      "title": "便利商店情境",
+      "prompt": "—",
+      "romaji": "ATM wa arimasu ka.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "ATMはありますか。",
+      "choices": [
+        {
+          "text": "有 ATM 嗎？",
+          "correct": true,
+          "explain": "對。 ありますか = 有嗎？"
+        },
+        {
+          "text": "可以刷卡嗎？",
+          "correct": false,
+          "explain": "這句是在問 ATM，不是刷卡。"
+        },
+        {
+          "text": "可以買水嗎？",
+          "correct": false,
+          "explain": "意思不同。"
+        }
+      ]
+    },
+    {
+      "topic": "便利商店",
+      "difficulty": 2,
+      "title": "便利商店情境",
+      "prompt": "—",
+      "romaji": "Kono mise de jūdenki wa utte imasu ka.",
+      "hint": "先聽題，再選最接近的意思。",
+      "audio": "この店で充電器は売っていますか。",
+      "choices": [
+        {
+          "text": "這家店有賣充電器嗎？",
+          "correct": true,
+          "explain": "對。 充電器 = 充電器、売っていますか = 有賣嗎？"
+        },
+        {
+          "text": "這家店有賣便當嗎？",
+          "correct": false,
+          "explain": "問的不是便當。"
+        },
+        {
+          "text": "可以借充電器嗎？",
+          "correct": false,
+          "explain": "這句是問能不能買，不是借。"
+        }
+      ]
+    },
+    {
+      "topic": "車站",
+      "difficulty": 2,
       "title": "月台情境",
       "prompt": "—",
       "romaji": "Kono densha wa Kyōto ni ikimasu ka.",
@@ -98,54 +158,6 @@
           "text": "請問這裡可以買票嗎？",
           "correct": false,
           "explain": "這句是在問購票，不是方向。"
-        }
-      ]
-    },
-    {
-      "title": "計程車情境",
-      "prompt": "—",
-      "romaji": "Kūkō made onegaishimasu.",
-      "hint": "先聽題，再選最接近的意思。",
-      "audio": "空港までお願いします。",
-      "choices": [
-        {
-          "text": "請到機場。",
-          "correct": true,
-          "explain": "對。 まで = 到／到達。"
-        },
-        {
-          "text": "請問機場在哪裡？",
-          "correct": false,
-          "explain": "這句不是目的地。"
-        },
-        {
-          "text": "我想要下車。",
-          "correct": false,
-          "explain": "意思不同。"
-        }
-      ]
-    },
-    {
-      "title": "餐廳情境",
-      "prompt": "—",
-      "romaji": "Osusume wa arimasu ka.",
-      "hint": "先聽題，再選最接近的意思。",
-      "audio": "おすすめはありますか。",
-      "choices": [
-        {
-          "text": "有推薦的嗎？",
-          "correct": true,
-          "explain": "對。 おすすめ = 推薦。"
-        },
-        {
-          "text": "可以外帶嗎？",
-          "correct": false,
-          "explain": "這句是在問推薦，不是外帶。"
-        },
-        {
-          "text": "要加辣嗎？",
-          "correct": false,
-          "explain": "意思不同。"
         }
       ]
     }

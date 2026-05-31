@@ -22,8 +22,8 @@
       "mode": "reading",
       "difficulty": 1,
       "status": "used",
-      "appearedCount": 6,
-      "lastSeen": "2026-05-30",
+      "appearedCount": 7,
+      "lastSeen": "2026-05-31",
       "prompt": "すみません、東京駅はどこですか。"
     },
     {
@@ -32,8 +32,8 @@
       "mode": "reading",
       "difficulty": 1,
       "status": "used",
-      "appearedCount": 4,
-      "lastSeen": "2026-05-30",
+      "appearedCount": 5,
+      "lastSeen": "2026-05-31",
       "prompt": "これを一つください。"
     },
     {
@@ -52,8 +52,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 5,
-      "lastSeen": "2026-05-30",
+      "appearedCount": 6,
+      "lastSeen": "2026-05-31",
       "prompt": "この電車は京都に行きますか。"
     },
     {
@@ -172,8 +172,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 1,
-      "lastSeen": "2026-05-15",
+      "appearedCount": 2,
+      "lastSeen": "2026-05-31",
       "prompt": "—"
     },
     {
@@ -202,8 +202,8 @@
       "mode": "reading",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 1,
-      "lastSeen": "2026-05-29",
+      "appearedCount": 2,
+      "lastSeen": "2026-05-31",
       "prompt": "<span class=\"ph\">袋</span> はいりません。"
     },
     {
@@ -212,8 +212,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 1,
-      "lastSeen": "2026-05-29",
+      "appearedCount": 2,
+      "lastSeen": "2026-05-31",
       "prompt": "—"
     }
   ]
