@@ -22,8 +22,8 @@
       "mode": "reading",
       "difficulty": 1,
       "status": "used",
-      "appearedCount": 8,
-      "lastSeen": "2026-06-01",
+      "appearedCount": 9,
+      "lastSeen": "2026-06-02",
       "prompt": "すみません、東京駅はどこですか。"
     },
     {
@@ -32,8 +32,8 @@
       "mode": "reading",
       "difficulty": 1,
       "status": "used",
-      "appearedCount": 5,
-      "lastSeen": "2026-05-31",
+      "appearedCount": 6,
+      "lastSeen": "2026-06-02",
       "prompt": "これを一つください。"
     },
     {
@@ -52,8 +52,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 6,
-      "lastSeen": "2026-05-31",
+      "appearedCount": 7,
+      "lastSeen": "2026-06-02",
       "prompt": "この電車は京都に行きますか。"
     },
     {
@@ -62,8 +62,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 4,
-      "lastSeen": "2026-05-30",
+      "appearedCount": 5,
+      "lastSeen": "2026-06-02",
       "prompt": "おすすめはありますか。"
     },
     {
@@ -102,8 +102,8 @@
       "mode": "reading",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 1,
-      "lastSeen": "2026-05-14",
+      "appearedCount": 2,
+      "lastSeen": "2026-06-02",
       "prompt": "<span class=\"ph\">空港まで</span> お願いします。"
     },
     {
@@ -182,8 +182,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 1,
-      "lastSeen": "2026-05-15",
+      "appearedCount": 2,
+      "lastSeen": "2026-06-02",
       "prompt": "—"
     },
     {
