@@ -52,8 +52,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 7,
-      "lastSeen": "2026-06-02",
+      "appearedCount": 8,
+      "lastSeen": "2026-06-03",
       "prompt": "この電車は京都に行きますか。"
     },
     {
@@ -92,8 +92,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 2,
-      "lastSeen": "2026-06-01",
+      "appearedCount": 3,
+      "lastSeen": "2026-06-03",
       "prompt": "—"
     },
     {
@@ -112,8 +112,8 @@
       "mode": "listening",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 3,
-      "lastSeen": "2026-05-29",
+      "appearedCount": 4,
+      "lastSeen": "2026-06-03",
       "prompt": "—"
     },
     {
@@ -122,8 +122,8 @@
       "mode": "reading",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 1,
-      "lastSeen": "2026-05-15",
+      "appearedCount": 2,
+      "lastSeen": "2026-06-03",
       "prompt": "<span class=\"ph\">これは</span> いくらですか。"
     },
     {
@@ -142,8 +142,8 @@
       "mode": "reading",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 1,
-      "lastSeen": "2026-05-15",
+      "appearedCount": 2,
+      "lastSeen": "2026-06-03",
       "prompt": "入場券はどこで買えますか。"
     },
     {
@@ -162,8 +162,8 @@
       "mode": "reading",
       "difficulty": 2,
       "status": "used",
-      "appearedCount": 1,
-      "lastSeen": "2026-05-15",
+      "appearedCount": 2,
+      "lastSeen": "2026-06-03",
       "prompt": "この写真を撮ってもいいですか。"
     },
     {
